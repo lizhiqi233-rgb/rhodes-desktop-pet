@@ -1,0 +1,188 @@
+#game-clues-root { display: grid; width: 100%; height: 100%; min-width: 0; min-height: 0; overflow: hidden; }
+#page-clues { display: grid; grid-template-rows: minmax(0, 1fr); }
+#page-clues > #game-clues-root { height: 100%; }
+#game-shop-root { display: grid; align-content: start; gap: 12px; width: 100%; min-width: 0; min-height: 0; overflow: auto; }
+.collection-economy { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: 8px; min-width: 0; }
+.collection-currencies { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1px; min-width: 0; margin: 0; border: 1px solid var(--line-dark); background: var(--line-dark); }
+.collection-currency { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: 10px; min-width: 0; padding: 7px 11px; background: var(--surface); }
+.collection-currency dt { display: flex; align-items: center; gap: 8px; min-width: 0; overflow: hidden; color: var(--ink-soft); font-size: 11px; text-overflow: ellipsis; white-space: nowrap; }
+.collection-currency .resource-icon { width: 25px; height: 25px; }
+.collection-currency dd { margin: 0; color: var(--ink); font-size: 17px; font-weight: 750; font-variant-numeric: tabular-nums; }
+.collection-economy-open { min-height: 40px; padding: 7px 12px; border: 1px solid var(--accent); background: var(--panel); color: var(--panel-ink); white-space: nowrap; font-size: 11px; }
+.collection-economy-open:hover { background: var(--accent); color: var(--accent-ink); }
+.collection-section { min-width: 0; padding: clamp(16px, 2vw, 28px); border: 1px solid var(--line); background: var(--surface); color: var(--ink); }
+.collection-section > h2 { margin: 0 0 6px; color: var(--ink); font-size: 20px; }
+#game-shop-root .game-help { color: var(--muted); font-size: 12px; line-height: 1.6; }
+.clue-room { position: relative; display: grid; grid-template-rows: auto minmax(0, 1fr) auto; width: 100%; height: 100%; min-width: 0; min-height: 0; overflow: hidden; border: 1px solid #566367; background: #182326; color: #edf1ec; }
+.clue-room::before { position: absolute; inset: 0; pointer-events: none; background-image: linear-gradient(#dbe3dc13 1px, transparent 1px), linear-gradient(90deg, #dbe3dc13 1px, transparent 1px), radial-gradient(ellipse at 48% 52%, #b5c6c033, transparent 54%); background-size: 26px 26px, 26px 26px, auto; content: ""; }
+.clue-room-heading, .clue-room-main, .clue-room-footer { position: relative; z-index: 1; min-width: 0; }
+.clue-room-heading { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 3px 12px; padding: 8px 14px; border-bottom: 1px solid #ffffff24; background: #121a1de8; }
+.clue-room-kicker { grid-column: 1 / -1; color: #96a6a5; font-size: 8px; font-weight: 750; letter-spacing: .16em; }
+.clue-room-heading h2 { margin: 0; color: #f5f5ed; font-size: 17px; letter-spacing: .08em; }
+.clue-room-day { color: #bbc6c0; font-size: 10px; font-variant-numeric: tabular-nums; }
+.clue-room-main { display: grid; grid-template-columns: minmax(160px, 19%) minmax(0, 1fr) minmax(205px, 23%); min-height: 0; }
+.clue-room-candidates { display: grid; grid-template-rows: auto repeat(2, minmax(0, 1fr)); gap: 8px; min-width: 0; min-height: 0; padding: 10px; border-right: 1px solid #ffffff20; background: #121a1dbb; }
+.clue-room-candidates h3, .clue-room-board h3, .clue-room-inventory h3, .clue-room-last-result h3 { margin: 0; color: #c5d0ca; font-size: 11px; font-weight: 700; letter-spacing: .12em; }
+.clue-room-candidate { position: relative; min-width: 0; min-height: 0; overflow: hidden; border: 1px solid #dce7df45; background: #273437; }
+.clue-room-candidate-art { position: absolute; inset: 0; width: 100%; height: 100%; background: #202b2d; }
+.clue-room-candidate-art img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 18%; filter: saturate(.78); }
+.clue-room-candidate-art .card-fallback, .clue-room-candidate-placeholder { display: grid; width: 100%; height: 100%; place-items: center; padding: 8px; color: #9eaaa7; font-size: 10px; text-align: center; }
+.clue-room-candidate-info { position: absolute; right: 0; bottom: 0; left: 0; display: grid; gap: 3px; padding: 8px 9px; background: linear-gradient(0deg, #11191bed, #11191b9c 68%, transparent); }
+.clue-room-candidate-info strong { overflow: hidden; color: #f6f4e9; font-size: 15px; text-overflow: ellipsis; white-space: nowrap; }
+.clue-room-candidate-info > span { color: #bdc8c1; font-size: 11px; }
+.clue-room-candidate-info .clue-room-owned { justify-self: start; padding: 2px 5px; border-left: 2px solid #e78935; background: #1a2428d9; color: #f3d1a3; }
+.clue-room-board { display: grid; grid-template-rows: auto minmax(0, 1fr); gap: 8px; min-width: 0; min-height: 0; padding: 12px 10px; }
+.clue-room-card-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); grid-template-rows: repeat(2, minmax(0, 1fr)); gap: 8px 5px; min-width: 0; min-height: 0; }
+.clue-room-card { position: relative; justify-self: center; align-self: center; width: min(100%, 102px); height: min(100%, 150px); overflow: hidden; border: 1px solid #c1d0c344; background: #d5e0d514; box-shadow: 0 5px 14px #0006; color: #fff; }
+.clue-room-card:nth-child(1) { transform: translateY(-4px) rotate(-2deg); }
+.clue-room-card:nth-child(2) { transform: translateY(24px) rotate(1deg); }
+.clue-room-card:nth-child(3) { transform: translateY(-8px) rotate(-1deg); }
+.clue-room-card:nth-child(4) { transform: translateY(12px) rotate(2deg); }
+.clue-room-card:nth-child(5) { grid-column: 2; grid-row: 2; transform: translate(40%, 12px) rotate(1deg); }
+.clue-room-card:nth-child(6) { grid-column: 3; grid-row: 2; transform: translate(40%, -24px) rotate(-2deg); }
+.clue-room-card:nth-child(7) { grid-column: 1; grid-row: 2; transform: translate(40%, -13px) rotate(1deg); }
+.clue-room-card img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(1) contrast(.72) brightness(1.08); opacity: .18; }
+.clue-room-card::after { position: absolute; inset: 0; background: linear-gradient(180deg, #151d1d4a, transparent 35%, #111a1ddd); content: ""; }
+.clue-room-card-label, .clue-room-card-number, .clue-room-card-count { position: absolute; z-index: 1; }
+.clue-room-card-label { top: 6px; left: 6px; color: #c4cec8; font-size: 9px; letter-spacing: .12em; }
+.clue-room-card-number { inset: 0; display: grid; place-items: center; color: #a6b3ad; font-size: 62px; font-weight: 300; line-height: 1; }
+.clue-room-card-count { right: 5px; bottom: 5px; padding: 2px 5px; background: #152020aa; color: #d5dfd8; font-size: 12px; font-weight: 600; }
+.clue-room-card.is-collected { border-color: #eef3edbd; background: #d5e0d52e; }
+.clue-room-card.is-collected img { opacity: .45; }
+.clue-room-card.is-collected .clue-room-card-number { color: #fff; text-shadow: 0 2px 10px #0006; }
+.clue-room-card.is-collected::before { position: absolute; top: 7px; right: 7px; z-index: 2; width: 7px; height: 7px; transform: rotate(45deg); background: #ef851c; content: ""; }
+.clue-room-console { display: grid; grid-template-rows: auto auto auto minmax(0, 1fr); gap: 9px; min-width: 0; min-height: 0; overflow: hidden; padding: 11px; border-left: 1px solid #ffffff20; background: #121a1dc9; }
+.clue-room-daily-note { margin: 0; padding: 6px; border-left: 2px solid #e78935; background: #e7893512; color: #e5caa6; font-size: 11px; line-height: 1.5; }
+.clue-room-inventory { display: grid; gap: 6px; min-width: 0; }
+.clue-room-total { margin: 0; color: #f3f2e9; font-size: 17px; font-weight: 750; font-variant-numeric: tabular-nums; }
+.clue-room-inventory > p:not(.clue-room-total), .clue-room-last-result p { margin: 0; color: #bdc8c1; font-size: 11px; line-height: 1.5; overflow-wrap: anywhere; }
+.clue-room-carry-label { color: #e8bb80 !important; font-variant-numeric: tabular-nums; }
+.clue-room-carry-progress { width: 100%; height: 5px; accent-color: #e58a36; }
+.clue-room-tools { display: grid; grid-template-columns: 1fr 1fr; gap: 5px; }
+.clue-room-tools .button { min-width: 0; min-height: 32px; padding: 4px 6px; border-color: #526166; background: #273336; color: #e8eee9; font-size: 12px; }
+.clue-room-tools .button:first-child { grid-column: 1 / -1; }
+.clue-room-tools .button:hover:not(:disabled) { border-color: #e78b39; color: #f4bf7e; }
+.clue-room-last-result { display: grid; align-content: end; gap: 4px; min-width: 0; padding-top: 7px; border-top: 1px solid #ffffff24; }
+.clue-room-last-result strong { overflow: hidden; color: #f6f4e9; font-size: 14px; text-overflow: ellipsis; white-space: nowrap; }
+.clue-room-footer { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: 12px; min-height: 47px; padding: 6px 12px; border-top: 1px solid #ffffff2c; background: #121a1de8; }
+.clue-room-claim-status { min-width: 0; margin: 0; color: #c5d0ca; font-size: 12px; line-height: 1.4; }
+.clue-room-claim-status[data-state="error"] { color: #ffb0a7; }
+.clue-room-claim { min-height: 36px; padding: 6px 18px; border-color: #e77c20; background: #db6c13; color: #fff7e9; font-size: 14px; }
+.clue-room-claim:hover:not(:disabled) { border-color: #ffad56; background: #ef7d1a; }
+.clue-room-stock-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1px; margin: 0; background: var(--line); }
+.clue-room-stock-list > div { display: flex; justify-content: space-between; gap: 8px; padding: 9px; background: var(--surface-muted); font-size: 12px; }
+.clue-room-stock-list dt { color: var(--ink-soft); }
+.clue-room-stock-list dd { margin: 0; color: var(--ink); font-weight: 700; font-variant-numeric: tabular-nums; }
+.collection-shop-status { margin: 10px 0; padding: 9px 11px; border-left: 3px solid var(--accent); background: var(--surface-muted); color: var(--ink); font-size: 13px; font-weight: 700; }
+.collection-shop .game-shop-form { grid-template-columns: minmax(0, 1fr) auto; gap: 9px; max-width: 680px; }
+.collection-shop .game-shop-form .button { min-height: 40px; padding: 8px 14px; }
+.collection-shop { position: relative; display: grid; align-content: start; gap: 10px; padding: 0; border: 0; background: transparent; }
+#game-shop-root { overflow: visible; }
+.collection-shop-tabs { display: flex; gap: 6px; padding-right: min(340px, 48%); border-bottom: 1px solid var(--line); }
+.collection-shop-tab { min-height: 36px; padding: 7px 14px; border: 1px solid var(--line); border-bottom: 0; background: var(--surface-muted); color: var(--ink-soft); font-size: 12px; cursor: pointer; }
+.collection-shop-tab[aria-pressed="true"] { border-color: var(--line-dark); background: var(--panel); color: var(--panel-ink); }
+.collection-shop-panel[hidden], .collection-theme-card[hidden] { display: none; }
+.collection-shop-monthly-panel > h2 { margin: 0 0 6px; color: var(--ink); font-size: 20px; }
+.collection-theme-shop-heading { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: 4px 14px; }
+.collection-theme-shop-heading .game-help { grid-column: 1 / -1; margin: 0; color: var(--muted); font-size: 12px; line-height: 1.6; }
+.collection-theme-shop-search { position: absolute; top: 0; right: 0; display: flex; align-items: center; gap: 8px; max-width: 48%; color: var(--ink-soft); font-size: 11px; }
+.collection-theme-shop-search input { width: min(220px, 28vw); min-width: 0; min-height: 34px; padding: 5px 8px; border: 1px solid var(--line); background: var(--surface); color: var(--ink); }
+.collection-theme-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); align-items: start; gap: 13px; min-width: 0; }
+.collection-theme-card { position: relative; display: grid; grid-template-rows: auto 150px minmax(0, 1fr); min-width: 0; overflow: hidden; border: 3px solid var(--surface); border-radius: 8px; background: var(--surface); color: var(--ink); box-shadow: 0 4px 10px #17202430; }
+.collection-theme-heading { min-width: 0; padding: 9px 12px; background: var(--panel); color: var(--panel-ink); }
+.collection-theme-heading h3 { margin: 0; overflow: hidden; color: inherit; font-size: 14px; font-weight: 750; text-overflow: ellipsis; white-space: nowrap; }
+.collection-theme-art { position: relative; min-width: 0; height: 150px; margin: 0; overflow: hidden; background: #1a2428; }
+.collection-theme-art img { width: 100%; height: 100%; object-fit: cover; }
+.collection-theme-art .card-fallback { display: grid; width: 100%; height: 100%; place-items: center; padding: 10px; color: #d9e0dc; font-size: 12px; text-align: center; }
+.collection-theme-details { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-content: start; gap: 5px 1px; min-width: 0; padding: 6px 0 0; }
+.collection-theme-ownership { grid-column: 1 / -1; margin: 0; padding: 0 7px; color: var(--ink-soft); font-size: 11px; font-variant-numeric: tabular-nums; }
+.collection-theme-price { display: flex; min-height: 34px; align-items: center; padding: 5px 8px; background: var(--panel); color: var(--panel-ink); font-size: 12px; font-weight: 750; font-variant-numeric: tabular-nums; }
+.collection-theme-availability { position: absolute; top: 42px; right: 7px; max-width: calc(100% - 14px); padding: 3px 6px; background: var(--surface); color: var(--ink); font-size: 10px; font-weight: 700; }
+.collection-theme-card[data-state="unaffordable"] .collection-theme-availability { color: var(--error); }
+.collection-theme-card[data-state="owned"] .collection-theme-availability { color: var(--ink-soft); }
+.collection-theme-card:is([data-state="available"], [data-state="owned"]) .collection-theme-availability { display: none; }
+.collection-theme-buy { width: auto; min-width: 56px; min-height: 34px; padding: 5px 8px; font-size: 12px; }
+.collection-theme-empty, .collection-theme-feedback { margin: 5px 0 0; color: var(--ink-soft); font-size: 12px; line-height: 1.5; }
+.collection-theme-empty[hidden] { display: none; }
+.collection-theme-feedback:empty { display: none; }
+.collection-theme-feedback:not(:empty) { position: sticky; z-index: 2; bottom: 0; padding: 9px 12px; border: 1px solid var(--line-dark); background: var(--surface); color: var(--ink); box-shadow: 0 -4px 12px #17202420; }
+.collection-utility-content { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); align-content: start; align-items: start; gap: 10px; min-width: 0; min-height: 0; overflow: auto; padding: 2px 3px 8px; }
+.collection-input-panel, .collection-exchange-panel { min-width: 0; padding: 16px; border: 1px solid var(--line); background: var(--surface); color: var(--ink); }
+.collection-input-panel h2, .collection-exchange-panel h2 { margin: 0 0 7px; color: var(--ink); font-size: 15px; }
+.collection-input-switch { min-height: 36px; color: var(--ink); font-size: 12px; }
+.collection-privacy-note { margin: 5px 0; color: var(--ink-soft); font-size: 12px; line-height: 1.5; }
+.collection-input-panel .game-feedback, .collection-exchange-panel .game-feedback { min-height: 0; margin: 4px 0; }
+.collection-input-panel .game-help, .collection-exchange-panel .game-help { margin: 5px 0; line-height: 1.5; }
+.collection-exchange-balance { margin: 7px 0; color: var(--ink); font-size: 14px; font-weight: 700; font-variant-numeric: tabular-nums; }
+.collection-exchange-panel .game-exchange-form { grid-template-columns: minmax(0, 1fr) auto; gap: 7px; }
+.collection-exchange-panel .game-exchange-form .button { min-height: 36px; padding: 6px 10px; font-size: 12px; }
+.collection-drawer { box-sizing: border-box; overflow: hidden; padding: 0; border: 1px solid var(--line-dark); background: var(--surface); color: var(--ink); box-shadow: -12px 0 40px rgba(23,32,36,.28); }
+.collection-drawer[open] { display: grid; }
+.collection-drawer::backdrop { background: rgba(23,32,36,.78); }
+.collection-gallery-drawer { inset: 0 0 0 auto; width: min(780px, 96vw); height: 100dvh; max-width: none; max-height: 100dvh; margin: 0 0 0 auto; }
+.collection-utility-drawer { inset: 0 0 0 auto; width: min(760px, 96vw); height: min(620px, calc(100dvh - 32px)); max-width: none; max-height: calc(100dvh - 32px); margin: auto 0 auto auto; }
+.collection-results-drawer { width: min(1100px, calc(100vw - 40px)); height: min(460px, calc(100dvh - 40px)); max-width: none; max-height: calc(100dvh - 40px); margin: auto; }
+.collection-drawer-panel { display: grid; grid-template-rows: auto minmax(0, 1fr); width: 100%; height: 100%; min-width: 0; min-height: 0; padding: 14px; }
+.collection-drawer-heading { display: flex; align-items: center; justify-content: space-between; gap: 12px; min-width: 0; padding: 10px 12px; background: var(--panel); color: var(--panel-ink); }
+.collection-drawer-heading h2 { min-width: 0; margin: 0; overflow: hidden; color: var(--panel-ink); font-size: 17px; text-overflow: ellipsis; white-space: nowrap; }
+.collection-drawer-close { min-height: 34px; flex: 0 0 auto; padding: 6px 11px; border: 1px solid var(--line-dark); background: var(--surface-muted); color: var(--ink); font-size: 12px; cursor: pointer; }
+.collection-drawer-close:hover { border-color: var(--accent); background: var(--accent); }
+.collection-gallery-drawer .collection-picker-heading { display: none; }
+.collection-gallery-drawer .collection-picker { height: 100%; }
+.collection-up-drawer-content { display: grid; grid-template-rows: auto minmax(0, 1fr); height: 100%; min-width: 0; min-height: 0; }
+.collection-up-drawer-content .collection-picker { height: 100%; }
+.collection-up-drawer-feedback { margin: 2px 10px 7px; color: var(--error); font-size: 12px; line-height: 1.5; }
+.collection-up-drawer-feedback:focus { outline: 3px solid var(--focus); outline-offset: 2px; }
+.collection-info-content { display: grid; align-content: start; gap: 14px; overflow: auto; padding: 16px 12px; color: var(--ink); }
+.collection-info-content h3 { margin: 0 0 8px; color: var(--ink); font-size: 15px; }
+.collection-info-rules, .collection-info-current { display: grid; gap: 7px; padding: 14px; border: 1px solid var(--line); background: var(--surface); }
+.collection-info-rules p, .collection-info-current p { margin: 0; color: var(--ink-soft); font-size: 12px; line-height: 1.6; }
+.collection-info-rates { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1px; margin: 5px 0 0; background: var(--line); }
+.collection-info-rates > div { display: flex; justify-content: space-between; gap: 8px; padding: 8px; background: var(--surface-muted); font-size: 12px; }
+.collection-info-rates dt { color: var(--ink-soft); }
+.collection-info-rates dd { margin: 0; color: var(--ink); font-weight: 700; font-variant-numeric: tabular-nums; }
+.collection-results-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); align-content: start; gap: 8px; min-width: 0; min-height: 0; overflow: auto; padding: 10px 4px 6px; scrollbar-gutter: stable; }
+.collection-result-card { display: grid; grid-template-columns: 78px minmax(0, 1fr); gap: 9px; min-width: 0; min-height: 112px; overflow: hidden; padding: 7px; border: 1px solid var(--line); background: var(--surface); color: var(--ink); }
+.collection-result-card.is-rarity-6 { border-top: 3px solid var(--rarity-gold); }
+.collection-result-card.is-rarity-5 { border-top: 3px solid var(--line-dark); }
+.collection-result-card.is-duplicate { background: var(--surface-muted); }
+.collection-result-portrait { position: relative; display: block; height: 104px; min-height: 0; overflow: hidden; background: var(--paper); }
+.collection-result-portrait img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 20%; }
+.collection-result-portrait .card-fallback { display: grid; width: 100%; height: 100%; place-items: center; padding: 4px; color: var(--muted); font-size: 10px; text-align: center; }
+.clue-room-candidate .clue-room-candidate-art { position: absolute; inset: 0; display: block; height: 100%; background: #202b2d; }
+.clue-room-candidate .clue-room-candidate-art img { object-position: 50% 18%; }
+.clue-room-candidate .clue-room-candidate-art .card-fallback { color: #9eaaa7; font-size: 10px; }
+.collection-result-details { display: flex; flex-direction: column; align-items: flex-start; justify-content: center; gap: 4px; min-width: 0; }
+.collection-result-details strong { max-width: 100%; overflow: hidden; color: var(--ink); font-size: 13px; text-overflow: ellipsis; white-space: nowrap; }
+.collection-result-stars, .collection-result-certificates { color: var(--rarity-gold); font-size: 10px; }
+.collection-result-profession, .collection-result-status { color: var(--muted); font-size: 10px; }
+.collection-result-card.is-new .collection-result-status { color: var(--focus); font-weight: 700; }
+@media (max-width: 760px) {
+  .collection-currency { gap: 6px; padding: 6px 7px; }
+  .collection-currency dt { font-size: 10px; }
+  .collection-currency dd { font-size: 14px; }
+  #game-clues-root { height: auto; min-height: calc(100dvh - 110px); overflow: auto; }
+  .clue-room { height: auto; min-height: 500px; overflow: visible; }
+  .clue-room-main { grid-template-columns: minmax(0, 1fr); }
+  .clue-room-candidates { grid-template-columns: repeat(2, minmax(0, 1fr)); grid-template-rows: auto minmax(190px, 1fr); }
+  .clue-room-candidates h3 { grid-column: 1 / -1; }
+  .clue-room-board { min-height: 420px; }
+  .clue-room-console { grid-template-columns: repeat(2, minmax(0, 1fr)); grid-template-rows: auto auto; }
+  .clue-room-last-result { grid-column: 1 / -1; align-content: center; }
+  .collection-utility-content { grid-template-columns: minmax(0, 1fr); }
+  .collection-results-grid { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); }
+}
+@media (max-width: 560px) {
+  .collection-economy { grid-template-columns: minmax(0, 1fr); }
+  .collection-economy-open { width: 100%; }
+  .collection-currency { grid-template-columns: minmax(0, 1fr); gap: 3px; }
+  .collection-section { padding: 12px; }
+  .collection-shop .game-shop-form, .collection-exchange-panel .game-exchange-form { grid-template-columns: minmax(0, 1fr); }
+  .collection-gallery-drawer, .collection-utility-drawer { width: 100vw; }
+  .collection-results-drawer { width: calc(100vw - 20px); }
+  .collection-results-grid { grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); }
+  .collection-theme-shop-heading { grid-template-columns: minmax(0, 1fr); }
+  .collection-theme-shop-search { align-items: stretch; flex-direction: column; gap: 4px; }
+  .collection-theme-shop-search input { width: 100%; }
+  .collection-theme-grid { grid-template-columns: repeat(auto-fill, minmax(145px, 1fr)); }
+}

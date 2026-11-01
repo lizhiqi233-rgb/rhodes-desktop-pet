@@ -1,0 +1,33 @@
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+  background: transparent;
+}
+
+body {
+  padding: var(--caption-padding);
+}
+
+#caption {
+  width: 100%;
+  max-height: var(--caption-max-height);
+  padding: 8px 12px;
+  border: 1px solid rgb(255 255 255 / 68%);
+  border-radius: 14px;
+  background: rgb(24 33 44 / 88%);
+  color: #fff;
+  font: 13px/1.35 "Segoe UI", sans-serif;
+  text-align: center;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  box-shadow: 0 3px 12px rgb(0 0 0 / 24%);
+}

@@ -1,0 +1,18 @@
+.confirmation-dialog {
+  width: min(560px, calc(100vw - 36px));
+  max-width: none;
+  max-height: calc(100dvh - 36px);
+  padding: 0;
+  border: 1px solid var(--line-dark);
+  border-radius: 0;
+  background: var(--surface);
+  color: var(--ink);
+  box-shadow: 0 18px 64px #101a2466;
+}
+.confirmation-dialog::backdrop { background: #101a24b8; }
+.confirmation-heading { padding: 18px 22px; border-bottom: 3px solid var(--accent); background: var(--panel); color: var(--panel-ink); }
+.confirmation-heading .eyebrow { margin-bottom: 7px; color: var(--panel-muted); }
+.confirmation-heading h2 { margin: 0; font-size: 20px; font-weight: 600; letter-spacing: 1px; }
+.confirmation-message { max-height: min(50dvh, 360px); overflow: auto; margin: 0; padding: 24px 22px; font-size: 14px; line-height: 1.8; white-space: pre-wrap; overflow-wrap: anywhere; }
+.confirmation-actions { display: flex; justify-content: flex-end; gap: 10px; padding: 14px 22px; border-top: 1px solid var(--line); background: var(--surface-muted); }
+.confirmation-actions .button { min-width: 96px; min-height: 38px; }

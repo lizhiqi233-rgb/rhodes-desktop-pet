@@ -1,0 +1,24 @@
+@import "./settings/theme.css";
+
+:root { background: transparent; }
+* { box-sizing: border-box; }
+html, body { width: 100%; height: 100%; margin: 0; overflow: hidden; background: transparent; }
+#pet-menu {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr);
+  grid-template-rows: repeat(5, minmax(0, 1fr));
+  gap: 6px 10px;
+  width: 100%;
+  height: 100%;
+  padding: 12px 14px 14px 18px;
+  transform: perspective(420px) rotateY(var(--menu-angle, -18deg));
+}
+#pet-menu[data-side="left"] { --menu-angle: 18deg; }
+.menu-entry { min-width: 0; min-height: 0; filter: drop-shadow(-3px 4px 2px rgb(0 0 0 / 18%)); }
+.menu-entry:nth-child(4n + 1), .menu-entry:nth-child(4n + 2) { transform: translateX(-5px); }
+.menu-entry:nth-child(n + 7) { grid-column: 1 / -1; }
+.menu-entry button { position: relative; display: block; width: 100%; height: 100%; min-width: 0; padding: 0 8px 0 19px; overflow: hidden; border: 0; border-radius: 0; background: #fff; color: #171b1e; font-family: inherit; font-size: clamp(11px, 6vw, 16px); font-weight: 550; text-align: left; text-overflow: ellipsis; white-space: nowrap; cursor: pointer; transition: background-color 100ms ease; }
+.menu-entry button::before { position: absolute; top: 8px; bottom: 8px; left: 7px; width: 3px; background: #a4abb0; content: ""; }
+.menu-entry button:hover, .menu-entry button:focus-visible { background: #fff4b0; }
+.menu-entry button:hover::before, .menu-entry button:focus-visible::before { background: var(--accent); }
+.menu-entry button:focus-visible { outline: 0; box-shadow: inset 0 0 0 2px #263237; }

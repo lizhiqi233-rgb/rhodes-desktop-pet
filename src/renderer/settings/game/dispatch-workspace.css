@@ -1,0 +1,73 @@
+.dispatch-map-overlay { --dispatch-drawer-width: min(500px, 45%); position: absolute; z-index: 4; inset: 0; pointer-events: none; }
+.dispatch-workspace-tabs { position: absolute; z-index: 5; bottom: 12px; left: 12px; display: flex; flex-wrap: wrap; gap: 6px; pointer-events: auto; }
+.dispatch-workspace-tab { min-height: 34px; padding: 6px 10px; border: 1px solid var(--line-dark); background: var(--panel); color: var(--panel-ink); font-size: 12px; }
+.dispatch-workspace-tab:hover:not(:disabled) { border-color: var(--accent); }
+.dispatch-workspace-tab[aria-pressed="true"] { border-color: var(--accent); background: var(--accent); color: var(--accent-ink); }
+.dispatch-workspace-panel { position: absolute; z-index: 4; top: 12px; right: 12px; display: grid; grid-template-rows: auto minmax(0, 1fr); gap: 8px; width: min(440px, calc(100% - 24px)); max-height: calc(100% - 64px); overflow: auto; padding: 12px; border: 1px solid var(--line-dark); background: var(--surface); color: var(--ink); pointer-events: auto; }
+.dispatch-workspace-panel[hidden], .dispatch-member-drawer[hidden], .dispatch-route-menu[hidden] { display: none; }
+.dispatch-workspace-panel > h3 { margin: -12px -12px 4px; padding: 10px 12px; border-bottom: 2px solid var(--accent); background: var(--panel); color: var(--panel-ink); font-size: 16px; }
+.dispatch-mission-panel { top: auto; right: auto; bottom: 56px; left: 12px; grid-template-rows: none; align-content: start; }
+.dispatch-map-overlay:has(.dispatch-member-drawer:not([hidden])) .dispatch-mission-panel { width: min(440px, calc(100% - var(--dispatch-drawer-width) - 36px)); }
+.dispatch-mission-events > summary { color: var(--ink); font-size: 12px; font-weight: 650; cursor: pointer; }
+.dispatch-mission-events[open] { display: grid; gap: 6px; }
+.dispatch-mission-panel :is(h3, h4) { margin: 2px 0; }
+.dispatch-mission-panel :is(.game-help, .game-feedback) { margin: 2px 0; color: var(--ink-soft); font-size: 12px; }
+.dispatch-mission-panel > .game-feedback { padding: 7px 9px; border-left: 3px solid var(--accent); background: var(--accent-soft); color: var(--ink); }
+.dispatch-mission-panel .game-feedback[data-state="error"] { border-left-color: var(--danger); background: var(--surface-muted); color: var(--error); }
+.dispatch-mission-panel .game-event-option, .dispatch-active-panel .game-event-option { margin: 0; padding: 7px; border: 1px solid var(--line); background: var(--surface-muted); color: var(--ink); font-size: 12px; }
+.dispatch-mission-panel .game-event-option > p { margin: 3px 0; }
+.dispatch-mission-panel .game-feedback { min-height: 1em; }
+.dispatch-mission-team { display: grid; gap: 6px; }
+.dispatch-team-slots { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px; }
+.dispatch-team-slot { display: grid; grid-template-rows: 58px auto auto; justify-items: center; gap: 4px; min-width: 0; min-height: 122px; padding: 7px 4px; border: 1px solid var(--line); background: var(--surface); color: var(--ink); text-align: center; cursor: pointer; }
+.dispatch-team-slot:hover:not(:disabled), .dispatch-team-slot[aria-pressed="true"] { border-color: var(--accent-hover); background: var(--accent-soft); }
+.dispatch-team-slot:disabled { cursor: not-allowed; opacity: .6; }
+.dispatch-team-slot-art { display: grid; width: 56px; height: 56px; place-items: center; overflow: hidden; background: var(--surface-muted); color: var(--ink-soft); font-size: 24px; }
+.dispatch-team-slot-art img { width: 100%; height: 100%; object-fit: cover; }
+.dispatch-team-slot-art .card-fallback { display: grid; place-items: center; padding: 2px; color: var(--muted); font-size: 8px; text-align: center; }
+.dispatch-team-slot strong { width: 100%; overflow: hidden; font-size: 11px; text-overflow: ellipsis; white-space: nowrap; }
+.dispatch-team-slot-details { color: var(--ink-soft); font-size: 10px; }
+.dispatch-mission-controls { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px; }
+.dispatch-mission-controls .game-field { min-width: 0; }
+.dispatch-mission-controls select { width: 100%; min-width: 0; }
+.dispatch-mission-panel > .button { justify-self: start; }
+.dispatch-active-panel { grid-template-rows: auto minmax(0, 1fr) auto; }
+.dispatch-active-list { display: grid; align-content: start; gap: 8px; min-height: 0; overflow: auto; }
+.dispatch-active-panel .game-dispatch-trip { margin: 0; padding: 10px; border: 1px solid var(--line); background: var(--surface); color: var(--ink); }
+.dispatch-active-panel .game-dispatch-trip h3 { margin: 0 0 5px; font-size: 14px; }
+.dispatch-active-panel .game-help { color: var(--muted); font-size: 11px; }
+.dispatch-active-panel .game-event-option label { display: flex; gap: 6px; align-items: start; }
+.dispatch-active-panel .game-event-option input { accent-color: var(--accent-ink); }
+.dispatch-active-panel .game-event-option input:disabled { opacity: .55; }
+.dispatch-active-panel .game-dispatch-actions { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 8px; }
+.dispatch-active-panel .game-field { flex: 1 1 140px; }
+.dispatch-active-panel > .game-feedback[data-state="error"] { padding: 6px 8px; border-left: 3px solid var(--danger); background: var(--surface-muted); color: var(--error); }
+.dispatch-active-panel > .game-feedback:empty { display: none; }
+.dispatch-reports-panel { display: block; }
+.dispatch-reports-panel .game-dispatch-reports { display: grid; gap: 8px; margin: 0; padding: 16px; border: 0; background: transparent; color: var(--ink); }
+.dispatch-reports-panel .game-report-list { display: grid; gap: 8px; }
+.dispatch-reports-panel .game-dispatch-reports > h2 { margin: -16px -16px 6px; padding: 10px 12px; border-bottom: 2px solid var(--accent); background: var(--panel); color: var(--panel-ink); font-size: 16px; }
+.dispatch-reports-panel .game-dispatch-report { margin: 0; padding: 9px; border: 1px solid var(--line); background: var(--surface-muted); color: var(--ink); }
+.dispatch-reports-panel .game-dispatch-report h3 { margin: 0 0 5px; font-size: 13px; }
+.dispatch-reports-panel .game-help { color: var(--muted); font-size: 11px; }
+.dispatch-reports-panel .game-help.is-error { color: var(--error); font-weight: 650; }
+.dispatch-reports-panel .game-dispatch-report-nav { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-top: 8px; }
+.dispatch-member-drawer { position: absolute; z-index: 7; top: 0; right: 0; display: grid; grid-template-rows: auto minmax(0, 1fr); width: var(--dispatch-drawer-width); height: 100%; border-left: 1px solid var(--line-dark); background: var(--surface); color: var(--ink); pointer-events: auto; }
+.dispatch-drawer-header { display: flex; align-items: center; justify-content: space-between; gap: 8px; padding: 10px 12px; border-bottom: 2px solid var(--accent); background: var(--panel); color: var(--panel-ink); }
+.dispatch-drawer-header h3 { margin: 0; color: var(--panel-ink); font-size: 15px; }
+.dispatch-drawer-body { display: grid; grid-template-rows: minmax(0, 1fr) auto; min-height: 0; padding: 8px; }
+.dispatch-drawer-body .collection-picker { min-height: 0; height: 100%; }
+.dispatch-slot-clear { justify-self: start; }
+.dispatch-route-menu { position: absolute; z-index: 6; display: grid; gap: 3px; min-width: 220px; max-width: min(360px, calc(100% - 16px)); max-height: calc(100% - 16px); overflow: auto; padding: 7px; border: 1px solid var(--line-dark); background: var(--panel); color: var(--panel-ink); pointer-events: auto; }
+.dispatch-route-menu-title { padding: 5px 8px; color: var(--panel-muted); font-size: 12px; }
+.dispatch-route-item { min-height: 34px; padding: 7px 9px; border: 0; border-left: 3px solid transparent; background: transparent; color: var(--panel-ink); font: inherit; text-align: left; cursor: pointer; }
+.dispatch-route-item:hover, .dispatch-route-item:focus-visible { outline: 0; border-left-color: var(--accent); background: var(--accent); color: var(--accent-ink); }
+.dispatch-route-item.is-locked { border-left-color: var(--accent); }
+.dispatch-route-item.is-completed { border-left-color: var(--success); }
+.dispatch-map-overlay :is(button, input, select, summary):focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+.dispatch-map-overlay :is(button, input, select):disabled { cursor: not-allowed; }
+@media (max-width: 760px) {
+  .dispatch-workspace-panel { top: 8px; right: 8px; width: calc(100% - 16px); max-height: calc(100% - 58px); }
+  .dispatch-workspace-tabs { bottom: 8px; left: 8px; }
+  .dispatch-mission-panel { top: auto; right: auto; bottom: 52px; left: 8px; }
+}

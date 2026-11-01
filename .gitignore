@@ -1,0 +1,43 @@
+# dependencies (bun install)
+node_modules
+
+# output
+build/
+*.tgz
+
+# Game assets are local cache, not covered by the source license.
+assets/characters/
+assets/.prepare-assets-staging/
+.verification/
+/cache/
+
+# Local development materials.
+/AGENTS.md
+/docs/
+/previews/
+/tests/
+/scripts/artwork_framing/
+/scripts/generate_artwork_framing.py
+
+# code coverage
+coverage
+*.lcov
+
+# logs
+logs
+*.log
+report.*.json
+
+# dotenv environment variable files
+.env*
+
+# caches
+.eslintcache
+.cache
+*.tsbuildinfo
+
+# IntelliJ based IDEs
+.idea
+
+# Finder (MacOS) folder config
+.DS_Store

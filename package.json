@@ -1,0 +1,60 @@
+{
+  "name": "rhodes-desktop-pet",
+  "version": "0.2.14",
+  "description": "An offline Arknights desktop companion",
+  "productName": "Rhodes Desktop Pet",
+  "author": "tianyu",
+  "license": "MIT",
+  "main": "build/runtime/main/index.js",
+  "devDependencies": {
+    "@types/node": "^26.6.5",
+    "@types/three": "^0.186.0",
+    "electron": "^45.0.0",
+    "electron-builder": "^26.15.3",
+    "electron-vite": "^6.0.0",
+    "typescript": "^7.0.2",
+    "vite": "^8.3.5"
+  },
+  "private": true,
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "prepare:assets": "bun run scripts/prepare-assets.ts",
+    "build": "electron-vite build",
+    "start": "electron .",
+    "dev": "bun run build && electron .",
+    "pack": "bun run build && electron-builder --win --x64 --dir --publish never",
+    "dist": "bun run typecheck && bun run build && electron-builder --win nsis --x64 --publish never"
+  },
+  "type": "module",
+  "dependencies": {
+    "@pixi-spine/base": "^4.0.6",
+    "@pixi-spine/runtime-3.8": "^4.0.6",
+    "@pixi/unsafe-eval": "7",
+    "fflate": "^0.8.3",
+    "pixi.js": "7",
+    "three": "^0.186.1"
+  },
+  "build": {
+    "appId": "dev.rhodes.desktoppet",
+    "electronDist": "node_modules/electron/dist",
+    "directories": {
+      "buildResources": "assets",
+      "output": "build/releases"
+    },
+    "files": ["build/runtime/**", "package.json", "LICENSE", "THIRD_PARTY_NOTICES.md"],
+    "extraResources": [{
+      "from": "assets",
+      "to": "assets"
+    }],
+    "asar": true,
+    "win": {
+      "target": "nsis",
+      "signAndEditExecutable": false
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true
+    },
+    "artifactName": "RhodesDesktopPet-${version}-Setup.${ext}"
+  }
+}

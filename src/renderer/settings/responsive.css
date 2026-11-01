@@ -1,0 +1,24 @@
+@media (max-width: 1050px) {
+  .operator-workspace { grid-template-columns: minmax(0, 1.1fr) minmax(325px, .9fr); }
+  .action-grid { grid-template-columns: repeat(2, minmax(110px, 1fr)); }
+}
+@media (max-width: 1100px) {
+  .management-header { gap: 10px; padding-inline: 10px; }
+  .management-heading .eyebrow { font-size: 7px; letter-spacing: 0; }
+  .management-header .collection-currency dt { gap: 5px; font-size: 9px; }
+  .management-header .collection-currency { gap: 5px; padding-inline: 6px; }
+  .management-header .collection-currency dd { font-size: 14px; }
+  .management-header .resource-icon { width: 20px; height: 20px; }
+}
+@media (max-width: 820px) {
+  .operator-workspace { height: auto; min-height: 0; grid-template-columns: minmax(0,1fr); }
+  .showcase-panel { min-height: 470px; }
+  .catalog-panel { min-height: 490px; }
+  .workspace { grid-template-columns: 160px minmax(0,1fr); }
+  .section-nav { padding-right: 6px; }
+  .settings-card { padding-right: 14px; padding-left: 14px; }
+}
+@media (max-height: 640px) {
+  .management-header { gap: 10px; }
+  .catalog-panel { min-height: 430px; }
+}

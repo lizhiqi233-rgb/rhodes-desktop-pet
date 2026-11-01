@@ -1,0 +1,35 @@
+:root {
+  color-scheme: light;
+  font-family: "Bahnschrift", "Segoe UI", "Microsoft YaHei UI", system-ui, sans-serif;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  --ink: #172024;
+  --ink-soft: #414f52;
+  --muted: #667375;
+  --line: #bfc8c2;
+  --line-dark: #65716d;
+  --paper: #e8e9e1;
+  --surface: #f5f5ed;
+  --surface-glass: #f5f5ed;
+  --surface-muted: #e0e5dd;
+  --panel: #1a2428;
+  --panel-ink: #f0f3e9;
+  --panel-muted: #acbab7;
+  --accent: #ffe500;
+  --accent-hover: #edda1c;
+  --accent-soft: #f6edb4;
+  --accent-ink: #172024;
+  --focus: #167f95;
+  --success: #2b775d;
+  --danger: #a63832;
+  --error: #8d2925;
+  --rarity-gold: #95701b;
+  --settings-workspace-height: max(360px, calc(100dvh - 98px));
+  color: var(--ink);
+  background: var(--paper);
+}
+.profession-icon { display: block; width: 24px; height: 24px; object-fit: contain; flex: 0 0 auto; }
+.resource-icon { display: block; width: 28px; height: 28px; object-fit: contain; flex: 0 0 auto; }
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { transition: none !important; scroll-behavior: auto !important; }
+}

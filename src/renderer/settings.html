@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' pet-assets:; media-src 'self' pet-assets:; connect-src 'self' pet-assets:; object-src 'none'; base-uri 'none'; form-action 'none'">
+    <meta name="theme-color" content="#1a2428">
+    <title>罗德岛 · 桌面助理</title>
+    <link rel="stylesheet" href="./settings.css">
+    <script type="module" src="./settings.ts"></script>
+  </head>
+  <body data-page="settings">
+    <div class="page-shell">
+      <header id="management-header" class="management-header" hidden>
+        <nav class="management-navigation" aria-label="页面导航">
+          <button id="management-back" class="management-back" type="button" aria-label="&#36820;&#22238;&#26700;&#38754;" title="&#36820;&#22238;&#26700;&#38754;"><span aria-hidden="true">‹</span></button>
+          <div class="management-heading"><p id="management-eyebrow" class="eyebrow">RHODES ISLAND / CONTROL CENTER</p><h1 id="management-page-title"></h1><span id="status" class="management-status" role="status" aria-live="polite" data-i18n="statusLoading">正在连接本地服务…</span></div>
+        </nav>
+        <div id="management-economy-host" hidden></div>
+      </header>
+      <main id="management-content">
+        <div id="error-message" class="error-message" role="alert" aria-live="assertive" hidden></div>
+        <section id="warning-panel" class="warning-panel" aria-labelledby="warning-heading" hidden><h2 id="warning-heading" data-i18n="notice">提示</h2><p id="warning-text"></p></section>
+        <section id="page-relations" class="page-view" aria-labelledby="management-page-title" hidden></section>
+        <section id="page-recruitment" class="page-view collection-feature" aria-label="招募" hidden><div id="game-recruitment-root" class="game-feature-panel"></div></section>
+        <section id="page-clues" class="page-view collection-feature" aria-label="线索" hidden><div id="game-clues-root" class="game-feature-panel"></div></section>
+        <section id="page-shop" class="page-view collection-feature" aria-label="凭证商店" hidden><div id="game-shop-root" class="game-feature-panel"></div></section>
+        <section id="page-dispatch" class="page-view" aria-label="派遣" hidden>
+          <div id="game-dispatch-root" class="game-feature-panel"></div>
+        </section>
+        <section id="page-settings" class="page-view" aria-label="设置" hidden>
+          <div class="workspace settings-workspace">
+            <nav class="section-nav" aria-label="设置分类">
+              <p class="nav-caption" data-i18n="settingsNav">偏好设置</p>
+              <button class="section-link is-active" type="button" data-settings-section="desktop" aria-current="page"><span class="nav-glyph" aria-hidden="true">▣</span><span data-i18n="sectionDesktop">桌面</span></button>
+              <button class="section-link" type="button" data-settings-section="behavior"><span class="nav-glyph" aria-hidden="true">◈</span><span data-i18n="sectionBehavior">行为</span></button>
+              <button class="section-link" type="button" data-settings-section="audio"><span class="nav-glyph" aria-hidden="true">◖</span><span data-i18n="sectionAudio">音频</span></button>
+              <button class="section-link" type="button" data-settings-section="cache"><span class="nav-glyph" aria-hidden="true">▤</span><span data-i18n="sectionCache">素材缓存</span></button>
+              <button class="section-link" type="button" data-settings-section="about"><span class="nav-glyph" aria-hidden="true">ⓘ</span><span data-i18n="sectionAbout">关于</span></button>
+              <div class="nav-current-operator"><p data-i18n="activeOperator">当前桌面干员</p><strong id="settings-active-operator" data-i18n="loading">读取中…</strong><span id="settings-active-id" class="mono"></span></div>
+            </nav>
+
+            <div class="settings-panels">
+              <section class="settings-panel is-active" data-settings-panel="desktop" aria-labelledby="desktop-heading">
+                <div class="section-banner"><h2 id="desktop-heading" data-i18n="sectionDesktop">Desktop</h2></div>
+                <div class="settings-card">
+                  <div class="section-intro"><h3 data-i18n="desktopActions">桌面控制</h3><p data-i18n="desktopActionsHelp">控制助理在桌面上的显示与位置。</p></div>
+                  <div class="action-grid">
+                    <button type="button" class="button button-light" data-command="show" data-i18n="showPet">显示助理</button>
+                    <button type="button" class="button button-light" data-command="hide" data-i18n="hidePet">隐藏助理</button>
+                    <button type="button" class="button button-light" data-command="find" data-i18n="findPet">定位助理</button>
+                    <button type="button" class="button button-danger" data-command="quit" data-i18n="quitApp">退出程序</button>
+                  </div>
+                  <p class="field-help" data-i18n="trayHelp">关闭此窗口不会退出程序，助理仍可从系统托盘管理。</p>
+                </div>
+                <div class="settings-card">
+                  <div class="section-intro"><h3 data-i18n="windowBehavior">窗口行为</h3><p data-i18n="windowBehaviorHelp">变更会立即保存到本机。</p></div>
+                  <div class="control-list">
+                    <label class="switch-row" for="always-on-top"><span class="control-copy"><span class="switch-title" data-i18n="alwaysOnTop">窗口置顶</span><span class="switch-help" data-i18n="alwaysOnTopHelp">让助理显示在其他窗口上方。</span></span><input id="always-on-top" class="switch-input" type="checkbox" role="switch"><span class="switch-track" aria-hidden="true"></span></label>
+                    <label class="switch-row" for="do-not-disturb"><span class="control-copy"><span class="switch-title" data-i18n="doNotDisturb">勿扰模式</span><span class="switch-help" data-i18n="doNotDisturbHelp">关闭助理语音反馈。</span></span><input id="do-not-disturb" class="switch-input" type="checkbox" role="switch"><span class="switch-track" aria-hidden="true"></span></label>
+                  </div>
+                </div>
+              </section>
+
+              <section class="settings-panel" data-settings-panel="behavior" aria-labelledby="behavior-heading" hidden>
+                <div class="section-banner"><h2 id="behavior-heading" data-i18n="sectionBehavior">Behavior</h2></div>
+                <div class="settings-card">
+                  <div class="section-intro"><h3 data-i18n="motionSettings">桌面活动</h3><p data-i18n="motionSettingsHelp">调整大小与助理在桌面上的自主活动。</p></div>
+                  <div class="control-list">
+                    <div class="control-row range-row"><div class="control-copy"><label class="range-label" for="scale"><span data-i18n="petScale">助理尺寸</span><output id="scale-value" class="range-value" for="scale">100%</output></label><p data-i18n="petScaleHelp">调整桌面角色的显示比例。</p></div><input id="scale" class="range-control" type="range" min="0.5" max="2" step="0.1" value="1" aria-label="助理尺寸"></div>
+                    <label class="switch-row" for="walking"><span class="control-copy"><span class="switch-title" data-i18n="roaming">桌面漫步</span><span class="switch-help" data-i18n="roamingHelp">允许助理沿桌面行走。</span></span><input id="walking" class="switch-input" type="checkbox" role="switch"><span class="switch-track" aria-hidden="true"></span></label>
+                  </div>
+                </div>
+                <div class="settings-card info-card"><h3 data-i18n="floorCalibration">地面校准</h3><p data-i18n="floorCalibrationHelp">角色落地位置与家具试坐姿态使用现有校准数据。</p></div>
+              </section>
+
+              <section class="settings-panel" data-settings-panel="audio" aria-labelledby="audio-heading" hidden>
+                <div class="section-banner"><h2 id="audio-heading" data-i18n="sectionAudio">Audio</h2></div>
+                <div class="settings-card">
+                  <div class="section-intro"><h3 data-i18n="voiceSettings">语音与音效</h3><p data-i18n="voiceSettingsHelp">分别管理角色语音与桌面反馈音。</p></div>
+                  <div class="control-list">
+                    <div class="audio-group"><label class="switch-row" for="voice-enabled"><span class="control-copy"><span class="switch-title" data-i18n="voiceEnabled">角色语音</span><span class="switch-help" data-i18n="voiceEnabledHelp">启用助理语音。</span></span><input id="voice-enabled" class="switch-input" type="checkbox" role="switch"><span class="switch-track" aria-hidden="true"></span></label><div class="control-row range-row volume-row"><div class="control-copy"><label class="range-label" for="voice-volume"><span data-i18n="voiceVolume">语音音量</span><output id="voice-volume-value" class="range-value" for="voice-volume">50%</output></label></div><input id="voice-volume" class="range-control" type="range" min="0" max="1" step="0.01" value="0.5" aria-label="语音音量"></div></div>
+                    <div class="control-row voice-language-row">
+                      <div class="control-copy"><label class="range-label" for="voice-language" data-i18n="voiceLanguage">Voice language</label><p id="voice-language-help" data-i18n="voiceLanguageHelp">Availability depends on each operator's recorded voices. Unavailable languages are not substituted.</p></div>
+                      <select id="voice-language" aria-describedby="voice-language-help"><option value="CN_MANDARIN" data-i18n="voiceLanguageChinese">Chinese (Mandarin)</option><option value="JP" data-i18n="voiceLanguageJapanese">Japanese</option><option value="EN" data-i18n="voiceLanguageEnglish">English</option><option value="KR" data-i18n="voiceLanguageKorean">Korean</option></select>
+                    </div>
+                    <div class="audio-group"><label class="switch-row" for="effects-enabled"><span class="control-copy"><span class="switch-title" data-i18n="effectsEnabled">交互音效</span><span class="switch-help" data-i18n="effectsEnabledHelp">启用桌面交互与动作音效。</span></span><input id="effects-enabled" class="switch-input" type="checkbox" role="switch"><span class="switch-track" aria-hidden="true"></span></label><div class="control-row range-row volume-row"><div class="control-copy"><label class="range-label" for="effects-volume"><span data-i18n="effectsVolume">音效音量</span><output id="effects-volume-value" class="range-value" for="effects-volume">50%</output></label></div><input id="effects-volume" class="range-control" type="range" min="0" max="1" step="0.01" value="0.5" aria-label="音效音量"></div></div>
+                  </div>
+                </div>
+              </section>
+
+              <section class="settings-panel" data-settings-panel="cache" aria-labelledby="cache-heading" hidden>
+                <div class="section-banner"><h2 id="cache-heading" data-i18n="sectionCache">Local assets</h2></div>
+                <div class="settings-card">
+                  <div class="section-intro section-intro-row"><div><h3 data-i18n="cacheManagement">Local assets</h3><p id="cache-summary" data-i18n="cacheLoading">Reading cache status…</p></div><button id="refresh-cache" class="button button-outline" type="button" data-i18n="refresh">Refresh</button></div>
+                  <div class="cache-directory-row"><p class="cache-directory"><span data-i18n="cacheDirectory">Cache directory</span><code id="cache-directory">—</code></p><button id="cache-directory-change" class="button button-outline" type="button" data-i18n="changeCacheDirectory">Change directory</button></div>
+                  <p id="cache-location-note" class="cache-location-note" role="status" aria-live="polite" hidden></p>
+                  <p class="cache-categories-help" data-i18n="cacheCategoriesHelp">Choose a category to expand its cached assets; choose it again to collapse.</p>
+                  <div class="cache-categories" role="group" aria-labelledby="cache-categories-heading">
+                    <span id="cache-categories-heading" class="sr-only" data-i18n="cacheCategories">Cache categories</span>
+                    <button class="cache-category" type="button" data-cache-category="operators" aria-pressed="false" aria-controls="cache-category-content"><span data-i18n="cacheOperators">Operator models</span><span id="cache-stat-operators" class="cache-category-stat">—</span></button>
+                    <button class="cache-category" type="button" data-cache-category="furniture" aria-pressed="false" aria-controls="cache-category-content"><span data-i18n="cacheFurniture">Furniture assets</span><span id="cache-stat-furniture" class="cache-category-stat">—</span></button>
+                    <button class="cache-category" type="button" data-cache-category="artwork" aria-pressed="false" aria-controls="cache-category-content"><span data-i18n="cacheArtwork">Artwork / images</span><span id="cache-stat-artwork" class="cache-category-stat">—</span></button>
+                    <button class="cache-category" type="button" data-cache-category="voices" aria-pressed="false" aria-controls="cache-category-content"><span data-i18n="cacheVoices">Voices</span><span id="cache-stat-voices" class="cache-category-stat">—</span></button>
+                    <button class="cache-category" type="button" data-cache-category="resources" aria-pressed="false" aria-controls="cache-category-content"><span data-i18n="cacheResourcePacks">Resource packs</span><span id="cache-stat-resources" class="cache-category-stat">—</span></button>
+                  </div>
+                  <div id="cache-category-content" hidden>
+                    <div class="cache-content-toolbar">
+                      <div class="cache-bulk-actions">
+                        <button id="cache-bulk" class="button button-primary" type="button" data-i18n="cacheBulk">Cache all</button>
+                        <button id="cache-bulk-cancel" class="button button-outline" type="button" data-i18n="cacheBulkCancel" hidden>Cancel</button>
+                        <progress id="cache-bulk-progress" class="download-progress cache-bulk-progress" max="1" value="0" hidden></progress>
+                      </div>
+                      <p id="cache-bulk-status" class="cache-pack-status" role="status" aria-live="polite" hidden></p>
+                    </div>
+                    <p id="resource-packs-status" class="cache-pack-status" role="status" aria-live="polite" hidden></p>
+                    <div id="cache-list" class="cache-list" aria-live="polite"></div>
+                    <p id="cache-empty" class="cache-empty" data-i18n="cacheCategoryEmpty" hidden>No cached assets in this category.</p>
+                  </div>
+                  <div class="cache-actions"><button id="clear-cache" class="button button-danger" type="button" data-i18n="clearCache">Clear unused downloads</button><span data-i18n="cacheHelp">Clearing does not affect settings or assets in use; cleared assets must be downloaded again.</span></div>
+                </div>
+                <div class="settings-card furniture-catalog-card">
+                  <div class="section-intro"><h3 data-i18n="furnitureSourceTitle">Furniture catalog and source</h3></div>
+                  <div class="furniture-catalog-source">
+                    <div class="catalog-source-facts"><p><span data-i18n="furnitureSourceLabel">Catalog version</span><strong id="furniture-catalog-version">—</strong></p><p><span data-i18n="furnitureUpdatedLabel">Last successful update</span><strong id="furniture-catalog-updated">—</strong></p></div>
+                    <div class="catalog-source-facts"><p><span data-i18n="furnitureModelSource">Model source</span><strong id="furniture-model-source">—</strong></p></div>
+                    <p class="catalog-source-help" data-i18n="furnitureAutoRefreshHelp">Catalog refresh also checks the model manifest. Theme archives download on demand.</p>
+                    <div class="catalog-source-actions"><span id="furniture-refresh-status" role="status" aria-live="polite"></span><button id="furniture-refresh-button" class="button button-outline" type="button" data-i18n="refreshFurnitureCatalog">Refresh catalog</button></div>
+                  </div>
+                </div>
+              </section>
+
+              <section class="settings-panel" data-settings-panel="about" aria-labelledby="about-heading" hidden>
+                <div class="section-banner"><h2 id="about-heading" data-i18n="sectionAbout">About</h2></div>
+                <div class="settings-card about-card"><h3 data-i18n="aboutTitle">罗德岛桌面助理</h3><p data-i18n="aboutBody">本程序以本地方式运行；素材仅在主动预览或应用时获取。</p><p class="rights-notice"><strong data-i18n="rightsTitle">素材与权利说明</strong><span data-i18n="rightsBody">角色、名称及第三方素材可能属于各自权利人。本项目不主张相关权利或授权，不应据此推断素材可公开再分发；再分发前请自行取得许可。</span></p></div>
+                <button id="reset-settings" class="button button-danger" type="button" data-i18n="resetSettings">Reset preferences</button>
+              </section>
+            </div>
+          </div>
+        </section>
+
+        <section id="page-operators" class="page-view" aria-label="干员" hidden>
+          <div class="catalog-workspace operator-workspace">
+            <section class="showcase-panel" aria-labelledby="operator-name">
+              <div class="showcase-art" id="operator-art-stage">
+                <img id="operator-art" alt="" hidden>
+                <p id="operator-art-empty" class="empty-stage" data-i18n="chooseOperator">从干员档案中选择一位干员</p>
+                <div id="operator-model-preview" class="model-preview" aria-label="Spine 模型预览"></div>
+                <div class="art-shade" aria-hidden="true"></div>
+                <div class="showcase-overline"><span id="operator-art-label" class="eyebrow" data-i18n="operatorIllustration">档案立绘</span><span class="mono" id="operator-rarity">—</span></div>
+                <div class="showcase-caption"><p id="operator-name" data-i18n="selectCandidate">选择候选干员</p><span id="operator-profession" class="profession-tag">—</span><p id="operator-id" class="mono">—</p></div>
+              </div>
+              <div class="candidate-controls">
+                <div class="candidate-meta"><div><p class="field-label" data-i18n="supportedSkin">可用形象</p><div id="skin-list" class="skin-list" role="group" aria-label="选择支持的形象"></div></div><div class="current-candidate"><span data-i18n="desktopCurrent">桌面当前</span><strong id="current-operator-label" data-i18n="loading">读取中…</strong></div></div>
+                <div id="operator-asset-state" class="asset-state" role="status" aria-live="polite" data-i18n="selectSupportedSkin">请选择一种支持的角色形象。</div>
+                <progress id="operator-progress" class="download-progress" max="1" value="0" hidden></progress>
+                <div class="candidate-actions"><button id="operator-preview-button" class="button button-outline" type="button" data-i18n="previewModel" disabled>预览模型</button><button id="operator-cancel-download" class="button button-outline" type="button" data-i18n="cancelDownload" hidden>取消下载</button><button id="operator-retry" class="button button-outline" type="button" data-i18n="retryDownload" hidden>重试</button><button id="operator-apply" class="button button-primary" type="button" data-i18n="applyOperator" disabled>应用到桌面</button></div>
+              </div>
+            </section>
+
+            <section class="catalog-panel" aria-labelledby="operator-catalog-heading">
+              <div class="catalog-heading"><h2 id="operator-catalog-heading" data-i18n="operatorCatalog">Operator archive</h2><span id="operator-count" class="result-count" aria-live="polite">—</span></div>
+              <div class="filter-stack">
+                <label class="search-box"><span class="sr-only" data-i18n="searchOperator">搜索干员</span><span aria-hidden="true">⌕</span><input id="operator-search" type="search" placeholder="搜索干员名称" data-i18n-placeholder="searchPlaceholder" autocomplete="off"></label>
+                <div class="filter-row"><label class="filter-control"><span data-i18n="profession">职业</span><select id="profession-filter" aria-label="按职业筛选"><option value="all" data-i18n="allProfessions">全部职业</option></select></label><label class="filter-control"><span data-i18n="rarity">稀有度</span><select id="rarity-filter" aria-label="按稀有度筛选"><option value="all" data-i18n="allRarities">全部星级</option><option value="6">★★★★★★</option><option value="5">★★★★★</option><option value="4">★★★★</option><option value="3">★★★</option><option value="2">★★</option><option value="1">★</option></select></label></div>
+                <div class="catalog-visibility-filters">
+                <label class="downloaded-filter"><input id="downloaded-filter" type="checkbox"><span data-i18n="downloadedOnly">仅显示本地可用</span></label>
+                <label class="downloaded-filter"><input id="owned-only-filter" type="checkbox" checked><span data-i18n="ownedOnly">仅显示已拥有</span></label>
+                </div>
+              </div>
+              <div id="operator-grid" class="operator-grid" role="listbox" aria-label="干员目录" aria-activedescendant=""></div>
+              <div class="operator-pagination" role="group" aria-labelledby="operator-pagination-label">
+                <span id="operator-pagination-label" class="sr-only" data-i18n="operatorPagination">Operator archive pages</span>
+                <button id="operator-page-previous" class="button button-outline" type="button" data-i18n="previousPage" aria-controls="operator-grid" disabled>Previous</button>
+                <span id="operator-page-count" aria-live="polite">1 / 1</span>
+                <button id="operator-page-next" class="button button-outline" type="button" data-i18n="nextPage" aria-controls="operator-grid" disabled>Next</button>
+              </div>
+              <p id="operator-empty" class="catalog-empty" data-i18n="catalogLoading">正在加载干员档案…</p>
+            </section>
+          </div>
+        </section>
+
+        <section id="page-furniture" class="page-view" aria-label="家具" hidden>
+          <div class="catalog-workspace furniture-workspace">
+            <section class="furniture-trial" aria-labelledby="furniture-trial-heading">
+              <div class="trial-heading"><h2 id="furniture-trial-heading" data-i18n="furnitureTrial">Furniture preview</h2><span class="trial-live"><span aria-hidden="true"></span><span data-i18n="localTrial">Local preview</span></span></div>
+              <div class="trial-stage" id="furniture-trial-stage"><div id="furniture-preview" class="furniture-preview" aria-label="当前干员家具姿态预览"></div><div id="furniture-empty" class="empty-stage" data-i18n="selectFurniture">选择椅子或床，预览当前干员姿态</div></div>
+              <div class="trial-summary"><div><span data-i18n="trialOperator">试摆干员</span><strong id="trial-operator-name" data-i18n="loading">读取中…</strong></div><div><span data-i18n="selectedChair">已选椅子</span><strong id="selected-chair-name" data-i18n="noneSelected">未选择</strong><button id="clear-removed-chair" class="text-button removed-selection-clear" type="button" data-i18n="clearRemovedChair" hidden>清除已移除椅子</button></div><div><span data-i18n="selectedBed">已选床铺</span><strong id="selected-bed-name" data-i18n="noneSelected">未选择</strong><button id="clear-removed-bed" class="text-button removed-selection-clear" type="button" data-i18n="clearRemovedBed" hidden>清除已移除床铺</button></div></div>
+              <p id="furniture-selection-warning" class="field-help is-error" role="alert" hidden></p>
+              <div class="furniture-inspector">
+              <details class="furniture-metadata" aria-labelledby="furniture-metadata-heading">
+                <summary id="furniture-metadata-heading"><span data-i18n="furnitureMetadataTitle">家具资料</span><span id="furniture-metadata-name"></span></summary>
+                <p id="furniture-metadata-empty" class="metadata-empty" data-i18n="furnitureMetadataChoose">选择家具查看其目录资料。</p>
+                <dl id="furniture-metadata-fields" class="furniture-metadata-fields"></dl>
+              </details>
+              <details id="furniture-fit-editor" class="furniture-fit-editor" aria-labelledby="furniture-fit-heading">
+                <summary class="fit-editor-heading"><h3 id="furniture-fit-heading" data-i18n="furnitureFitControls">试摆微调</h3><button id="furniture-fit-reset" class="text-button" type="button" data-i18n="furnitureFitReset" disabled>恢复默认</button></summary>
+                <div class="fit-controls">
+                  <label class="fit-control" for="furniture-fit-contact-x"><span><span data-i18n="furnitureFitContactX">接触位置 X</span><output id="furniture-fit-contact-x-value" for="furniture-fit-contact-x">0.50</output></span><input id="furniture-fit-contact-x" type="range" min="0" max="1" step="0.01" value="0.5" disabled></label>
+                  <label class="fit-control" for="furniture-fit-contact-y"><span><span data-i18n="furnitureFitContactY">接触位置 Y</span><output id="furniture-fit-contact-y-value" for="furniture-fit-contact-y">0.50</output></span><input id="furniture-fit-contact-y" type="range" min="0" max="1" step="0.01" value="0.5" disabled></label>
+                  <label class="fit-control" for="furniture-fit-foreground"><span><span data-i18n="furnitureFitForeground">家具前景遮挡分界</span><output id="furniture-fit-foreground-value" for="furniture-fit-foreground">0.50</output></span><input id="furniture-fit-foreground" type="range" min="0" max="1" step="0.01" value="0.5" disabled></label>
+                  <label class="fit-control" for="furniture-fit-scale"><span><span data-i18n="furnitureFitScale">家具相对尺寸</span><output id="furniture-fit-scale-value" for="furniture-fit-scale">1.00</output></span><input id="furniture-fit-scale" type="range" min="0.5" max="1.75" step="0.01" value="1" disabled></label>
+                  <label class="fit-control" for="furniture-fit-rotation-x"><span><span data-i18n="furnitureFitRotationX">X 轴旋转</span><output id="furniture-fit-rotation-x-value" for="furniture-fit-rotation-x">0°</output></span><input id="furniture-fit-rotation-x" type="range" min="-180" max="180" step="1" value="0" disabled></label>
+                  <label class="fit-control" for="furniture-fit-rotation-y"><span><span data-i18n="furnitureFitRotationY">Y 轴旋转</span><output id="furniture-fit-rotation-y-value" for="furniture-fit-rotation-y">0°</output></span><input id="furniture-fit-rotation-y" type="range" min="-180" max="180" step="1" value="0" disabled></label>
+                  <label class="fit-control" for="furniture-fit-rotation-z"><span><span data-i18n="furnitureFitRotationZ">Z 轴旋转</span><output id="furniture-fit-rotation-z-value" for="furniture-fit-rotation-z">0°</output></span><input id="furniture-fit-rotation-z" type="range" min="-180" max="180" step="1" value="0" disabled></label>
+                </div>
+                <p id="furniture-fit-help" class="field-help" data-i18n="furnitureFitHelp">Model contact points can be adjusted in the preview before applying.</p>
+              </details>
+              </div>
+              <div class="furniture-trial-footer">
+              <div id="furniture-asset-state" class="asset-state" role="status" aria-live="polite" data-i18n="furnitureTrialHelp">家具素材仅在试摆或应用时获取；预览不会改动桌面配置。</div>
+              <progress id="furniture-progress" class="download-progress" max="1" value="0" hidden></progress>
+              <div class="candidate-actions"><button id="furniture-test-chair" class="button button-outline" type="button" data-i18n="testChair" disabled>试坐椅子</button><button id="furniture-test-bed" class="button button-outline" type="button" data-i18n="testBed" disabled>试躺床铺</button><button id="furniture-cancel-download" class="button button-outline" type="button" data-i18n="cancelDownload" hidden>取消下载</button><button id="furniture-retry" class="button button-outline" type="button" data-i18n="retryDownload" hidden>重试</button><button id="furniture-apply" class="button button-primary" type="button" data-i18n="applyFurniture" disabled>应用到所有干员</button></div>
+              <p class="field-help" data-i18n="globalFurnitureHelp">应用后作为所有干员共用的家具搭配；试摆只影响此窗口。</p>
+              </div>
+            </section>
+
+            <section class="furniture-browser" aria-labelledby="furniture-browser-heading">
+              <div class="browser-tabs"><button id="furniture-themes-tab" class="browser-tab is-active" type="button" aria-pressed="true" data-i18n="themeCatalog">主题</button><button id="furniture-items-tab" class="browser-tab" type="button" aria-pressed="false" data-i18n="furnitureItems">家具单品</button></div>
+              <div class="browser-title"><h2 id="furniture-browser-heading" data-i18n="themeCatalog">Furniture themes</h2><span id="furniture-count" class="result-count">—</span></div>
+              <div id="furniture-themes" class="theme-grid" role="group" aria-label="家具主题"></div>
+              <div id="furniture-items-view" class="furniture-items-view" hidden><div class="item-filter-row"><label class="filter-control"><span data-i18n="itemType">家具类型</span><select id="furniture-kind-filter" aria-label="按家具类型筛选"><option value="all" data-i18n="allItems">全部家具</option><option value="chair" data-i18n="chairs">椅子</option><option value="bed" data-i18n="beds">床铺</option><option value="other" data-i18n="otherFurniture">其他家具</option></select></label><button id="show-all-themes" class="text-button" type="button" data-i18n="allThemes">全部主题</button></div><div id="furniture-items" class="furniture-item-grid" role="group" aria-label="家具单品"></div></div>
+              <p id="furniture-empty-list" class="catalog-empty" data-i18n="catalogLoading">正在加载家具档案…</p>
+            </section>
+          </div>
+        </section>
+      </main>
+    </div>
+  </body>
+</html>

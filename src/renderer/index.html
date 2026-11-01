@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' pet-assets:; media-src 'self' pet-assets:; connect-src 'self' pet-assets:; object-src 'none'; base-uri 'none'; form-action 'none'">
+    <title>&#32599;&#24503;&#23707;&#26700;&#23456;</title>
+    <link rel="stylesheet" href="./pet.css">
+  </head>
+  <body>
+    <main id="pet-root" aria-label="&#26700;&#23456;">
+      <div id="canvas-slot"></div>
+      <section id="error-panel" role="alert" hidden>
+        <p id="error-message"></p>
+        <div class="error-actions">
+          <button id="retry-button" type="button" hidden>&#37325;&#35797;</button>
+          <button type="button" id="error-settings-button">&#35774;&#32622;</button>
+        </div>
+      </section>
+    </main>
+    <script type="module" src="./pet.ts"></script>
+  </body>
+</html>

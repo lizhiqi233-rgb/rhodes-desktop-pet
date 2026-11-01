@@ -1,0 +1,54 @@
+.game-dispatch { display: grid; grid-column: 1 / -1; min-width: 0; }
+.dispatch-map-card { box-sizing: border-box; display: block; width: 100%; height: var(--settings-workspace-height); min-height: 480px; min-width: 0; padding: 0; border-color: var(--line-dark); background: var(--panel); color: var(--panel-ink); }
+.dispatch-map { position: relative; height: 100%; min-height: 0; min-width: 0; }
+.dispatch-map-header { position: absolute; z-index: 1; top: 12px; left: 12px; display: grid; gap: 4px; width: min(440px, calc(100% - 24px)); padding: 9px 12px; border: 1px solid var(--line-dark); background: var(--panel); pointer-events: none; }
+.dispatch-map-header h2 { margin: 0; padding: 0; border: 0; background: none; color: var(--panel-ink); font-size: 16px; }
+.dispatch-map-header .game-help { margin: 0; color: var(--panel-muted); font-size: 11px; }
+.dispatch-map-toolbar { position: absolute; z-index: 2; top: 84px; left: 12px; display: flex; flex-wrap: wrap; align-items: center; gap: 6px; max-width: calc(100% - 24px); pointer-events: auto; }
+.dispatch-map-control { min-height: 32px; padding: 5px 9px; border: 1px solid var(--line-dark); background: var(--surface); color: var(--ink); font-size: 11px; }
+.dispatch-map-control:hover:not(:disabled) { border-color: var(--accent); background: var(--accent); color: var(--accent-ink); }
+.dispatch-map-viewport { position: relative; height: 100%; min-height: 230px; min-width: 0; overflow: clip; border: 1px solid var(--line-dark); background: var(--panel); cursor: grab; touch-action: none; user-select: none; }
+.dispatch-map-viewport:focus-visible { outline: 2px solid var(--focus); outline-offset: -3px; }
+.dispatch-map-viewport.is-dragging { cursor: grabbing; }
+.dispatch-map-world { position: absolute; top: 0; left: 0; transform-origin: 0 0; }
+.dispatch-map-raster { position: absolute; inset: 0; display: block; width: 100%; height: 100%; object-fit: fill; pointer-events: none; user-select: none; }
+.dispatch-map-territories { position: absolute; inset: 0; width: 100%; height: 100%; visibility: hidden; pointer-events: none; }
+.dispatch-map-viewport.has-raster .dispatch-map-territories { visibility: visible; }
+.dispatch-map-territory { fill: var(--panel-ink); fill-opacity: .04; stroke: var(--panel-muted); stroke-opacity: .8; stroke-width: 1; vector-effect: non-scaling-stroke; pointer-events: all; cursor: pointer; }
+.dispatch-map-territory.is-unlocked { fill: var(--success); fill-opacity: .14; stroke: var(--success); stroke-opacity: 1; }
+.dispatch-map-territory.is-completed { fill: var(--rarity-gold); fill-opacity: .2; stroke: var(--rarity-gold); stroke-opacity: 1; }
+.dispatch-map-territory.is-locked { fill: var(--muted); fill-opacity: .08; stroke: var(--panel-muted); stroke-opacity: .8; stroke-dasharray: 15 12; }
+.dispatch-map-territory:is(.is-selected, :hover) { fill: var(--focus); fill-opacity: .34; stroke: var(--focus); stroke-opacity: 1; stroke-width: 2; }
+.dispatch-map-location-halo { display: none; fill: var(--focus); fill-opacity: .14; stroke: var(--focus); stroke-opacity: 1; stroke-width: 2; stroke-dasharray: 6 5; vector-effect: non-scaling-stroke; pointer-events: none; }
+.dispatch-map-location-halo.is-active { display: block; }
+.dispatch-map-markers { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
+.dispatch-map-pin { position: absolute; display: block; width: auto; height: auto; padding: 0; border: 0; background: transparent; color: var(--panel-ink); font: inherit; transform: scale(var(--map-inverse-scale, 1)) translate(-50%, -50%); transform-origin: 0 0; cursor: pointer; pointer-events: auto; }
+.dispatch-map-pin-label { display: block; padding: 3px 6px; border: 1px solid var(--line-dark); background: var(--panel); color: var(--panel-ink); font-size: 11px; font-weight: 650; line-height: 1.2; white-space: nowrap; }
+.dispatch-map-pin:is(:hover, :focus-visible, .is-selected) { z-index: 2; }
+.dispatch-map-pin:is(:hover, :focus-visible, .is-selected) .dispatch-map-pin-label { border-color: var(--focus); }
+.dispatch-map-pin.is-completed .dispatch-map-pin-label { border-color: var(--rarity-gold); }
+.dispatch-map-pin.is-locked .dispatch-map-pin-label { border-style: dashed; }
+.dispatch-map-pin:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+.dispatch-map-fallback { position: absolute; z-index: 1; inset: 0; display: grid; padding: 20px; place-items: center; color: var(--panel-muted); font-size: 12px; text-align: center; pointer-events: none; }
+.dispatch-map-status { position: absolute; z-index: 1; right: 12px; bottom: 12px; display: grid; justify-items: end; gap: 6px; max-width: min(520px, calc(100% - 24px)); padding: 9px 11px; border: 1px solid var(--line-dark); background: var(--panel); pointer-events: none; }
+.dispatch-map-legend { display: flex; flex-wrap: wrap; gap: 6px 12px; color: var(--panel-muted); font-size: 11px; }
+.dispatch-map-legend-item { display: inline-flex; align-items: center; gap: 5px; }
+.dispatch-map-legend-item i { width: 9px; height: 9px; border: 2px solid var(--panel-muted); }
+.dispatch-map-legend-item.is-selected i { border-color: var(--focus); background: var(--focus); }
+.dispatch-map-legend-item.is-unlocked i { border-color: var(--success); }
+.dispatch-map-legend-item.is-completed i { border-color: var(--rarity-gold); }
+.dispatch-map-selection { display: flex; flex-wrap: wrap; align-items: baseline; gap: 3px 12px; }
+.dispatch-map-region-status { color: var(--panel-ink); font-size: 12px; }
+.dispatch-map-region-status[data-state="locked"], .dispatch-map-region-status[data-state="completed"] { color: var(--accent); }
+.dispatch-map-approximate { margin: 0; color: var(--panel-muted); font-size: 10px; }
+.dispatch-map-attribution { margin: 0; color: var(--panel-muted); font-size: 10px; }
+.dispatch-map-asset-controls { display: none; flex-wrap: wrap; align-items: center; gap: 6px; pointer-events: auto; }
+.dispatch-map-asset-controls:has(button:not([hidden])) { display: flex; }
+.dispatch-map-card .button-outline { border-color: var(--line); background: var(--surface); color: var(--ink); }
+.dispatch-slot-status { position: absolute; z-index: 1; top: 12px; right: 12px; margin: 0; padding: 8px 10px; border: 1px solid var(--line-dark); background: var(--panel); color: var(--panel-muted); font-size: 11px; pointer-events: none; }
+@media (max-width: 760px) {
+  .dispatch-map-card { padding: 0; }
+  .dispatch-map-viewport { min-height: 240px; }
+  .dispatch-map-toolbar { align-items: stretch; }
+  .dispatch-map-control { flex: 1 1 96px; }
+}

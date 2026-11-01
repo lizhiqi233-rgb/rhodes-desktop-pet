@@ -1,0 +1,31 @@
+.collection-picker { display: grid; grid-template-rows: auto auto minmax(0, 1fr) auto; min-width: 0; min-height: 0; height: 100%; color: var(--ink); }
+.collection-picker-heading { display: flex; align-items: center; gap: 10px; min-height: 30px; padding: 2px 10px; }
+.collection-picker-title { flex: 0 0 auto; color: var(--ink); font-size: 12px; font-weight: 700; letter-spacing: .04em; }
+.collection-picker-toolbar { display: flex; flex-wrap: wrap; align-items: end; gap: 7px; margin: 8px 10px 10px; }
+.collection-picker-toolbar > input { flex: 1 1 150px; min-width: 0; }
+.collection-picker-toolbar > input, .collection-picker-filter select { width: 100%; min-height: 36px; padding: 6px 8px; border: 1px solid var(--line-dark); border-radius: 0; background: var(--surface); color: var(--ink); font-size: 12px; }
+.collection-picker-toolbar > input:focus-visible, .collection-picker-filter select:focus-visible, .collection-picker button:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
+.collection-picker-filter { display: grid; flex: 1 1 95px; min-width: 0; gap: 4px; color: var(--muted); font-size: 11px; }
+.collection-picker-selected { flex: 1 1 auto; min-width: 0; overflow: hidden; color: var(--ink-soft); font-size: 12px; text-overflow: ellipsis; white-space: nowrap; }
+.collection-picker-clear { flex: 0 0 auto; min-height: 36px; padding: 6px 10px; border: 1px solid var(--line-dark); background: var(--panel); color: var(--panel-ink); font-size: 12px; }
+.collection-picker-clear:hover { border-color: var(--accent); background: var(--accent); color: var(--accent-ink); }
+.collection-picker-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(82px, 1fr)); grid-auto-rows: 130px; align-content: start; gap: 7px; min-height: 0; overflow: auto; margin: 0 10px; padding: 4px; border: 1px solid var(--line); background: var(--surface-muted); scrollbar-gutter: stable; }
+.collection-picker-grid:has(> .collection-picker-empty) { grid-auto-rows: minmax(0, 1fr); }
+.collection-picker-card { position: relative; display: grid; grid-template-rows: 76px 13px minmax(14px, auto) 13px; min-width: 0; overflow: hidden; padding: 4px; border: 1px solid var(--line); background: var(--surface); color: var(--ink); text-align: left; cursor: pointer; }
+.collection-picker-card:hover { border-color: var(--line-dark); }
+.collection-picker-card.is-selected { border: 2px solid var(--ink); box-shadow: inset 0 -3px var(--accent); }
+.collection-picker-card.is-owned { border-left: 3px solid var(--focus); }
+.collection-picker-card:focus-visible { z-index: 1; outline: 3px solid var(--focus); outline-offset: 1px; }
+.collection-picker-card.is-unavailable .collection-picker-art { filter: grayscale(1); opacity: .6; }
+.collection-picker-unavailable { position: absolute; top: 5px; right: 5px; left: 5px; overflow: hidden; padding: 3px 4px; background: rgba(23,32,36,.92); color: var(--panel-ink); font-size: 10px; text-overflow: ellipsis; white-space: nowrap; }
+.collection-picker-art { position: relative; display: block; min-width: 0; overflow: hidden; background: var(--paper); }
+.collection-picker-art img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 20%; }
+.collection-picker-art .card-fallback { display: grid; width: 100%; height: 100%; place-items: center; padding: 3px; color: var(--muted); font-size: 9px; text-align: center; }
+.collection-picker-rarity { overflow: hidden; color: var(--rarity-gold); font-size: 9px; line-height: 13px; letter-spacing: -.08em; white-space: nowrap; }
+.collection-picker-card strong { overflow: hidden; color: var(--ink); font-size: 12px; line-height: 15px; text-overflow: ellipsis; white-space: nowrap; }
+.collection-picker-class { overflow: hidden; color: var(--muted); font-size: 10px; line-height: 14px; text-overflow: ellipsis; white-space: nowrap; }
+.collection-picker-owned { position: absolute; top: 5px; left: 5px; padding: 2px 4px; background: var(--surface); color: var(--ink); font-size: 8px; }
+.collection-picker-empty { grid-column: 1 / -1; align-self: center; justify-self: center; margin: 10px; color: var(--muted); font-size: 12px; text-align: center; }
+.collection-picker-pagination { display: flex; align-items: center; justify-content: center; gap: 10px; padding: 9px 0; color: var(--ink-soft); font-size: 12px; }
+.collection-picker-page { min-height: 32px; padding: 5px 10px; border: 1px solid var(--line-dark); border-radius: 0; background: var(--surface-muted); color: var(--ink); font-size: 12px; }
+.collection-picker-page:disabled { opacity: .5; cursor: default; }

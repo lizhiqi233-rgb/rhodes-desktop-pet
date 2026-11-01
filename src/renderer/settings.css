@@ -1,0 +1,13 @@
+@import "./settings/theme.css";
+@import "./settings/base.css";
+@import "./settings/confirm.css";
+@import "./settings/operators.css";
+@import "./settings/furniture.css";
+@import "./settings/game.css";
+@import "./settings/game/collection-picker.css";
+@import "./settings/game/collection.css";
+@import "./settings/game/recruitment.css";
+@import "./settings/game/dispatch-map.css";
+@import "./settings/game/dispatch-workspace.css";
+@import "./settings/responsive.css";
+@import "./settings/game/relations.css";

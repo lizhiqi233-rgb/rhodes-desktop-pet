@@ -1,0 +1,238 @@
+#game-recruitment-root { display: grid; width: 100%; height: 100%; min-width: 0; min-height: 0; }
+.collection-recruitment { position: relative; display: grid; grid-template-columns: clamp(116px, 15vw, 148px) minmax(0, 1fr); width: 100%; height: 100%; min-width: 0; min-height: 500px; overflow: clip; border: 1px solid var(--line-dark); background: var(--panel); color: var(--panel-ink); }
+.collection-profession-rail { position: relative; z-index: 4; display: grid; grid-template-rows: auto minmax(0, 1fr) auto; gap: 12px; min-width: 0; min-height: 0; padding: 17px 9px 13px; border-right: 1px solid #ffffff22; background: #161e21; color: #fff; }
+.collection-profession-heading { display: grid; gap: 7px; padding-left: 9px; font-size: 13px; letter-spacing: 2px; }
+.collection-profession-heading small { color: #8d9a9d; font-size: 8px; letter-spacing: .8px; }
+.collection-professions { display: grid; grid-template-rows: repeat(8, minmax(0, 1fr)); gap: 5px; min-width: 0; min-height: 0; margin: 0; }
+.collection-profession { position: relative; isolation: isolate; display: flex; align-items: center; gap: 9px; min-height: 34px; min-width: 0; overflow: hidden; padding: 0 8px; border: 1px solid #ffffff12; background: #222b2e; color: #c4cbca; text-align: left; cursor: pointer; }
+.collection-profession:hover { background: #344043; color: white; }
+.collection-profession:disabled { opacity: .55; cursor: default; }
+.collection-profession[aria-pressed="true"] { border-right: 4px solid #ffe500; background: #e9ece4; color: #172024; }
+.collection-profession[aria-pressed="true"]::after { position: absolute; z-index: 1; top: 0; bottom: 0; left: 0; width: 3px; background: #ffe500; content: ""; }
+.collection-profession .profession-icon { z-index: 2; width: 25px; height: 25px; flex: 0 0 auto; filter: brightness(0) invert(1); object-fit: contain; }
+.collection-profession[aria-pressed="true"] .profession-icon { filter: brightness(0); }
+.collection-profession-copy { position: relative; z-index: 2; display: grid; gap: 3px; }
+.collection-profession-copy strong { font-size: 13px; letter-spacing: 1.5px; white-space: nowrap; }
+.collection-profession-copy small { color: inherit; opacity: .65; font-size: 7px; font-weight: 500; letter-spacing: .5px; }
+.collection-profession-thumb { position: absolute; z-index: 0; top: 0; right: -5px; width: 66px; height: 100%; opacity: .24; mask-image: linear-gradient(90deg, transparent, #000 50%); }
+.collection-profession-thumb-image { width: 100%; height: 100%; object-fit: cover; object-position: 50% 16%; }
+.collection-profession-thumb .card-fallback { display: none; }
+.collection-rail-signature { display: flex; align-items: center; gap: 9px; margin-top: auto; padding: 13px 4px 0; border-top: 1px solid #ffffff24; }
+.collection-rail-signature strong { padding: 8px 2px; border-bottom: 2px solid #ffe500; font: 700 17px Georgia, serif; }
+.collection-rail-signature span { font-size: 10px; line-height: 1.5; }
+.collection-recruitment-poster {
+  --art-primary-x: 31%;
+  --art-secondary-x: 58%;
+  --art-primary-head: min(28cqh, 24cqw);
+  --art-secondary-head: min(18cqh, 16cqw);
+  --art-frame-gap: min(2cqh, 2cqw);
+  position: relative;
+  isolation: isolate;
+  container-type: size;
+  min-width: 0;
+  min-height: 0;
+  overflow: clip;
+  background: linear-gradient(112deg, #2f4845 0%, var(--recruitment-tint, #b5c7ad) 39%, #e8ecdc 70%, #f5f3e9 100%);
+}
+.collection-recruitment-poster[data-profession="PIONEER"] { --recruitment-tint: #b5c7ad; }
+.collection-recruitment-poster[data-profession="WARRIOR"] { --recruitment-tint: #d5bbb7; }
+.collection-recruitment-poster[data-profession="TANK"] { --recruitment-tint: #b4c4c6; }
+.collection-recruitment-poster[data-profession="SNIPER"] { --recruitment-tint: #d6beb0; }
+.collection-recruitment-poster[data-profession="CASTER"] { --recruitment-tint: #c7b9cf; }
+.collection-recruitment-poster[data-profession="MEDIC"] { --recruitment-tint: #b4c9c4; }
+.collection-recruitment-poster[data-profession="SUPPORT"] { --recruitment-tint: #d7cdaa; }
+.collection-recruitment-poster[data-profession="SPECIAL"] { --recruitment-tint: #a9b9ba; }
+.collection-recruitment-poster::before { position: absolute; z-index: -1; inset: 0; background: #f6f6e93d; clip-path: polygon(54% 0, 72% 0, 33% 100%, 17% 100%); content: ""; }
+.collection-recruitment-poster::after { position: absolute; z-index: 3; inset: 0; pointer-events: none; background: linear-gradient(0deg, #101b20ed, #18232b99 17%, transparent 55%); content: ""; }
+.collection-poster-grid { position: absolute; z-index: -1; inset: 0; opacity: .2; background-image: linear-gradient(#f7faf02b 1px, transparent 1px), linear-gradient(90deg, #f7faf02b 1px, transparent 1px); background-size: 46px 46px; mask-image: linear-gradient(90deg, #000, transparent 73%); }
+.collection-poster-orbits { position: absolute; z-index: -1; inset: 0; pointer-events: none; }
+.collection-poster-orbit { position: absolute; top: -15%; left: -10%; width: min(850px, 85%); aspect-ratio: 1; border: 1px solid #fbffe147; border-radius: 50%; }
+.collection-poster-orbit-secondary { top: 3%; left: 1%; width: min(610px, 70%); border-style: dashed; opacity: .7; }
+.collection-poster-background-word { position: absolute; z-index: -1; top: 32%; left: -24px; color: #f5f5ed22; font-size: clamp(100px, 13vw, 220px); font-weight: 900; letter-spacing: -.06em; user-select: none; }
+.collection-poster-registration { position: absolute; z-index: 5; top: 18px; left: 28px; right: 28px; display: flex; align-items: center; justify-content: space-between; gap: 10px; font-size: 9px; letter-spacing: 1.5px; }
+.collection-poster-registration > span:first-child { padding-bottom: 6px; border-bottom: 1px solid #edf4e670; color: #edf4e6; }
+.collection-poster-registration > span:last-child { color: #5e6d65; }
+.collection-poster-registration b { color: #172b29; font-size: 12px; }
+.collection-poster-heading { position: absolute; z-index: 4; top: 64px; right: 34px; width: 28%; min-width: 235px; max-width: 330px; color: #172024; }
+.collection-poster-heading::before { position: absolute; z-index: -1; inset: -18px -36px; pointer-events: none; background: linear-gradient(90deg, #edf0e500, #edf0e5eb 28%, #f3f3e9f2 80%); content: ""; }
+.collection-poster-kicker { display: flex; align-items: center; gap: 12px; padding-bottom: 11px; border-bottom: 1px solid #32493c57; }
+.collection-poster-kicker span:first-child { color: #1d2c25; font-size: 9px; font-weight: 800; letter-spacing: 1px; }
+.collection-poster-kicker span:last-child { color: #526357; font-size: 11px; }
+.collection-poster-title { margin: 16px 0 12px; font-size: clamp(48px, 5.1vw, 82px); line-height: .98; letter-spacing: -3px; font-weight: 900; }
+.collection-poster-subtitle { display: inline-block; margin: 0; padding: 6px 12px; color: #edf3d8; background: #1b2b26; font-size: 12px; letter-spacing: 1px; }
+.collection-poster-description { margin: 16px 0 0; color: #475b4d; font-size: 12px; line-height: 1.8; letter-spacing: 1px; }
+.collection-poster-edition { display: flex; justify-content: space-between; align-items: center; gap: 14px; margin-top: 20px; padding-top: 12px; border-top: 1px solid #32493c38; color: #627469; font-size: 8px; letter-spacing: 1px; }
+.collection-poster-barcode { width: 67px; height: 21px; opacity: .55; background: repeating-linear-gradient(90deg, #34473c 0 1px, transparent 1px 3px, #34473c 3px 6px, transparent 6px 9px); }
+.collection-up-grid { position: absolute; z-index: 2; inset: 0; min-width: 0; min-height: 0; overflow: visible; pointer-events: none; }
+.collection-up-slot { position: absolute; inset: 0; display: block; min-width: 0; overflow: visible; border: 0; background: transparent; color: var(--panel-ink); text-align: left; pointer-events: none; }
+.collection-up-art { position: absolute; z-index: 1; inset: 0; overflow: visible; pointer-events: none; }
+.plate-six .collection-up-art {
+  z-index: 2;
+  mask-image: linear-gradient(to right,
+    #000 max(
+      calc(var(--art-primary-x) + var(--art-primary-head) / 2),
+      calc(var(--art-secondary-x) - var(--art-secondary-head) / 2 - 3 * var(--art-frame-gap))
+    ),
+    transparent calc(var(--art-secondary-x) - var(--art-secondary-head) / 2 - var(--art-frame-gap))
+  );
+}
+.collection-up-illustration { position: absolute; top: 0; width: auto; height: 100%; max-width: none; object-fit: contain; object-position: center bottom; transform: translateX(-50%); filter: drop-shadow(12px 18px 16px #13252738); }
+.plate-six .collection-up-illustration { left: var(--art-primary-x); --art-target-size: var(--art-primary-head); --art-target-y: .22; }
+.plate-five .collection-up-illustration { left: var(--art-secondary-x); --art-target-size: var(--art-secondary-head); --art-target-y: .17; filter: saturate(.8) drop-shadow(12px 12px 13px #263c332a); }
+.collection-up-illustration.has-head-frame {
+  --art-unit: min(1200cqh, calc(var(--art-target-size) / var(--art-source-span)));
+  height: calc(var(--art-unit) * var(--art-source-height));
+  top: calc(100cqh * var(--art-target-y) - var(--art-unit) * var(--art-head-y));
+  transform: translateX(calc(-100% * var(--art-head-x)));
+}
+.collection-up-empty { position: absolute; top: 34%; left: 15%; width: 32%; color: var(--panel-ink); font-size: 12px; text-align: center; text-shadow: 0 2px 8px var(--ink); }
+.collection-up-details { position: absolute; z-index: 5; display: grid; grid-template-columns: 25px minmax(0, 1fr); align-items: center; gap: 5px 9px; max-width: min(330px, 42%); padding: 9px 11px; background: #152321eb; color: #f5f5ed; pointer-events: auto; }
+.plate-six .collection-up-details { bottom: 222px; left: 34px; width: 330px; }
+.plate-five .collection-up-details { top: 35%; left: 56%; width: 270px; background: #eef1e5f0; color: #172722; }
+.collection-up-rarity, .collection-up-meta, .collection-up-button { grid-column: 1 / -1; }
+.collection-up-rarity { grid-row: 1; color: #ffdd7b; font-size: 16px; letter-spacing: 3px; text-shadow: 0 2px 6px #182525; }
+.collection-up-state { grid-column: 2; grid-row: 1; justify-self: end; padding: 3px 6px; border-left: 3px solid #ffe500; color: #f5f5ed; font-size: 9px; }
+.collection-up-profession-icon { grid-column: 1; width: 23px; height: 23px; filter: brightness(0) invert(1); }
+.collection-up-name { grid-column: 2; min-width: 0; overflow: hidden; font-size: clamp(18px, 2vw, 27px); font-weight: 650; text-overflow: ellipsis; white-space: nowrap; }
+.collection-up-meta { overflow: hidden; color: #b9c8c8; font-size: 9px; text-overflow: ellipsis; white-space: nowrap; }
+.collection-up-button { display: flex; justify-content: space-between; align-items: center; min-height: 31px; padding: 5px 8px; border: 1px solid #f5f5ed55; background: #263c35; color: #f5f5ed; font-size: 10px; cursor: pointer; }
+.collection-up-button:hover:not(:disabled) { border-color: #ffe500; color: #ffe500; }
+.collection-up-button:disabled { opacity: .55; cursor: default; }
+.plate-five .collection-up-rarity { color: #9a7d36; text-shadow: none; }
+.plate-five .collection-up-state { border-color: #9ba478; color: #172722; }
+.plate-five .collection-up-profession-icon { filter: brightness(0); }
+.plate-five .collection-up-meta { color: #687477; }
+.plate-five .collection-up-button { border-color: #8b9690; background: #dce1d8; color: #172722; }
+.plate-five .collection-up-button:hover:not(:disabled) { border-color: #239fb3; color: #172722; }
+.collection-recruitment-message { position: absolute; z-index: 5; bottom: 105px; left: 34px; width: min(42%, 540px); color: #fff; }
+.collection-message-label { display: inline-block; margin-bottom: 10px; padding: 4px 7px; border-left: 3px solid #ffe500; color: #ece9b5; background: #15211f7a; font-size: 9px; letter-spacing: 2px; }
+.collection-recruitment-message h3 { margin: 0; font-size: clamp(24px, 2.65vw, 39px); line-height: 1.24; letter-spacing: 1px; font-weight: 700; }
+.collection-recruitment-message p { margin: 9px 0 0; color: #d1dad2; font-size: 11px; line-height: 1.5; letter-spacing: 1px; }
+.collection-recruitment-utility { position: absolute; z-index: 6; bottom: 28px; left: 34px; display: flex; gap: 8px; width: min(43%, 510px); }
+.collection-utility-action, .collection-results-button { display: flex; flex: 1 1 0; justify-content: space-between; align-items: center; gap: 10px; min-width: 0; min-height: 39px; padding: 0 12px; border: 1px solid #d4dfdb59; background: #1a282cc9; color: #e8eee9; font-size: 10px; text-align: left; cursor: pointer; }
+.collection-utility-action:hover:not(:disabled), .collection-results-button:hover:not(:disabled) { border-color: #ffe500; color: #ffe500; }
+.collection-results-button:disabled { opacity: .55; cursor: default; }
+.collection-recruitment-console { position: absolute; z-index: 6; right: 34px; bottom: 27px; display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); grid-template-areas: "feedback feedback" "guarantee actions" "rates rates" "probability probability"; align-items: start; gap: 7px 14px; width: min(52%, 780px); min-width: 0; color: #fff; }
+ .collection-recruitment-feedback { grid-area: feedback; max-height: 44px; min-height: 0; overflow: auto; margin: 0; padding: 0; color: #fff; font-size: 11px; line-height: 1.45; }
+ .collection-recruitment-feedback:empty { display: none; }
+ .collection-recruitment-feedback:not(:empty) { padding: 6px 8px; border-left: 3px solid #ffe500; background: #172024e8; }
+ .collection-recruitment-guarantee { grid-area: guarantee; display: grid; grid-template-columns: 43px minmax(0, 1fr); align-items: center; gap: 5px 8px; padding-bottom: 8px; border-bottom: 1px solid #e1e9db40; }
+ .collection-guarantee-number { color: #ffe500; font-size: 43px; font-weight: 300; line-height: 1; }
+ .collection-recruitment-guarantee p { grid-column: 2; display: grid; gap: 3px; min-width: 0; margin: 0; font-size: 10px; line-height: 1.5; }
+ .collection-recruitment-guarantee strong { color: #f8e79b; font-size: 10px; }
+ .collection-shared-pity { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; grid-column: 1 / -1; min-width: 0; color: #c5d0ca; font-size: 9px; }
+ .collection-pity { flex: 0 1 auto; min-width: 0; overflow-wrap: anywhere; }
+ .collection-pity-progress { flex: 1 1 45px; min-width: 36px; width: 100%; height: 3px; accent-color: #d1ce82; }
+.collection-recruitment-actions { grid-area: actions; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 3px; }
+.collection-pull-button { display: grid; min-width: 0; padding: 0; border: 0; background: transparent; color: #172223; text-align: left; cursor: pointer; }
+.collection-pull-button:hover:not(:disabled) { transform: translateY(-2px); }
+.collection-pull-button:disabled { opacity: .5; cursor: default; }
+.collection-pull-cost { display: flex; align-items: center; justify-content: flex-end; gap: 6px; min-height: 26px; padding: 2px 8px; background: #172024e8; color: #f0b7ad; font-size: 13px; font-variant-numeric: tabular-nums; }
+.collection-pull-cost .resource-icon { width: 22px; height: 22px; }
+.collection-pull-face { display: flex; align-items: center; gap: 7px; min-height: 66px; padding: 8px 9px; background: #f4f4e9; }
+.collection-pull-face > b { align-self: flex-start; color: #172024; font-size: 34px; font-weight: 300; line-height: 1.1; opacity: .68; }
+.collection-pull-face > span { display: grid; gap: 4px; margin-left: auto; font-size: clamp(14px, 1.45vw, 21px); font-weight: 650; white-space: nowrap; }
+.collection-pull-face small { font-size: 7px; font-weight: 500; letter-spacing: 1.2px; }
+.collection-pull-button.is-pull-ten .collection-pull-face { background: #ffe500; }
+.collection-probability-totals { grid-area: rates; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 4px; }
+.collection-probability-total { display: flex; align-items: center; justify-content: space-between; gap: 4px; min-width: 0; padding: 6px; background: #f4f4e9; color: #475b4d; font-size: 9px; font-variant-numeric: tabular-nums; }
+.collection-probability-total strong { color: #172024; white-space: nowrap; }
+.collection-probability-total.is-rarity-6 strong, .collection-probability-total.is-rarity-5 strong { color: #9a7d36; }
+.collection-probabilities { grid-area: probability; border-top: 1px solid #e1e9db40; }
+.collection-probabilities summary { padding: 7px 2px; color: #fff; font-size: 10px; font-weight: 700; cursor: pointer; }
+.collection-probability-candidates { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1px 12px; max-height: 160px; overflow: auto; margin-top: 5px; padding: 6px 8px; background: #f4f4e9; }
+.collection-probability-row { min-width: 0; overflow-wrap: anywhere; color: #475b4d; font-size: 10px; line-height: 1.5; font-variant-numeric: tabular-nums; }
+.collection-recruitment button:focus-visible { outline: 3px solid #239fb3; outline-offset: 3px; }
+@media (max-width: 1100px) {
+  .collection-recruitment { grid-template-columns: 120px minmax(0, 1fr); }
+  .collection-profession-rail { gap: 10px; padding: 15px 8px 11px; }
+  .collection-profession { gap: 7px; padding: 0 6px; }
+  .collection-profession-copy strong { font-size: 12px; letter-spacing: 1px; }
+  .collection-rail-signature { gap: 6px; }
+  .collection-poster-registration { left: 20px; right: 20px; }
+  .collection-poster-heading { top: 36px; right: 20px; width: 30%; min-width: 205px; }
+  .collection-poster-heading::before { inset: -10px -18px; }
+  .collection-poster-title { margin: 12px 0; font-size: clamp(43px, 5vw, 56px); }
+  .collection-poster-description, .collection-poster-edition { display: none; }
+  .collection-recruitment-poster {
+    --art-primary-x: 34%;
+    /* Keep the secondary head left of the heading's 20px right inset. */
+    --art-secondary-x: min(62%, calc(70% - 20px - var(--art-secondary-head) / 2));
+    --art-primary-head: min(26cqh, 24cqw);
+    --art-secondary-head: min(17cqh, 16cqw);
+  }
+  .plate-six .collection-up-illustration { --art-target-y: .21; }
+  .plate-five .collection-up-illustration { --art-target-y: .16; }
+  .plate-six .collection-up-details { bottom: 214px; left: 18px; width: 300px; }
+  .plate-five .collection-up-details { top: 31%; left: 52%; width: min(230px, 32%); }
+  .collection-up-details { grid-template-columns: 20px minmax(0, 1fr); gap: 3px 7px; padding: 6px 9px; }
+  .collection-up-meta { display: none; }
+  .collection-up-rarity { font-size: 14px; line-height: 1; letter-spacing: 2px; }
+  .collection-up-name { font-size: 22px; line-height: 1.1; }
+  .collection-up-profession-icon { width: 20px; height: 20px; }
+  .collection-up-button { min-height: 27px; padding: 4px 7px; }
+  .collection-shared-pity { gap: 5px; }
+  .collection-recruitment-message { bottom: 101px; left: 18px; width: 39%; }
+  .collection-recruitment-message h3 { font-size: clamp(22px, 2.4vw, 30px); }
+  .collection-recruitment-message p { font-size: 10px; }
+  .collection-recruitment-utility { bottom: 17px; left: 18px; width: 40%; gap: 6px; }
+  .collection-utility-action, .collection-results-button { min-height: 36px; padding: 0 8px; font-size: 9px; }
+  .collection-recruitment-console { right: 18px; bottom: 16px; width: min(57%, 680px); grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); gap: 5px 9px; }
+  .collection-guarantee-number { font-size: 38px; }
+  .collection-recruitment-guarantee p { font-size: 9px; }
+  .collection-pull-face { min-height: 60px; gap: 5px; padding: 7px; }
+  .collection-pull-face > b { font-size: 29px; }
+  .collection-pull-cost { font-size: 12px; }
+}
+@media (max-height: 680px) and (min-width: 761px) {
+  .collection-profession-rail { gap: 9px; padding-top: 12px; padding-bottom: 9px; }
+  .collection-rail-signature { padding-top: 9px; }
+  .collection-poster-heading { top: 31px; }
+  .collection-poster-description, .collection-poster-edition { display: none; }
+  .collection-recruitment-poster { --art-primary-head: min(25cqh, 24cqw); }
+  .plate-six .collection-up-details { bottom: 205px; }
+  .collection-recruitment-message { bottom: 92px; }
+  .collection-recruitment-console { bottom: 13px; gap: 4px 8px; }
+  .collection-pull-face { min-height: 56px; }
+}
+@media (max-width: 760px) {
+  #game-recruitment-root { height: auto; min-height: 0; }
+  .collection-recruitment { grid-template-columns: minmax(0, 1fr); grid-template-rows: auto minmax(860px, 1fr); height: auto; min-height: 0; overflow: visible; }
+  .collection-profession-rail { grid-template-rows: auto; gap: 0; padding: 8px; border-right: 0; border-bottom: 1px solid #ffffff22; }
+  .collection-profession-heading, .collection-rail-signature { display: none; }
+  .collection-professions { display: flex; gap: 5px; overflow-x: auto; padding: 3px; scrollbar-width: thin; }
+  .collection-profession { flex: 0 0 88px; height: 46px; }
+  .collection-profession .profession-icon { width: 21px; height: 21px; }
+  .collection-recruitment-poster {
+    --art-primary-x: 40%;
+    --art-secondary-x: 72%;
+    --art-primary-head: min(18cqh, 24cqw);
+    --art-secondary-head: min(16cqh, 16cqw);
+    min-height: 860px;
+  }
+  .collection-poster-registration { top: 14px; left: 18px; right: 18px; font-size: 7px; }
+  .collection-poster-registration > span:first-child { display: none; }
+  .collection-poster-registration > span:last-child { margin-left: auto; }
+  .collection-poster-heading { top: 38px; right: 16px; width: 43%; min-width: 0; }
+  .collection-poster-heading::before { inset: -9px -10px; }
+  .collection-poster-kicker { gap: 7px; padding-bottom: 7px; }
+  .collection-poster-kicker span:first-child, .collection-poster-kicker span:last-child { font-size: 8px; }
+  .collection-poster-title { margin: 11px 0; font-size: 43px; }
+  .collection-poster-subtitle { padding: 5px 7px; font-size: 9px; }
+  .collection-poster-description, .collection-poster-edition { display: none; }
+  .collection-poster-background-word { top: 35%; font-size: 140px; }
+  .plate-six .collection-up-illustration { --art-target-y: .23; }
+  .plate-five .collection-up-illustration { --art-target-y: .28; }
+  .plate-six .collection-up-details { top: 39%; bottom: auto; left: 20px; width: calc(60% - 26px); max-width: none; }
+  .plate-five .collection-up-details { top: 39%; left: auto; right: 20px; width: calc(40% - 26px); max-width: none; }
+  .collection-up-details { gap: 4px 6px; padding: 6px 7px; }
+  .collection-up-name { font-size: 19px; }
+  .collection-up-meta { font-size: 8px; }
+  .collection-up-button { min-height: 27px; font-size: 9px; }
+  .collection-recruitment-message { bottom: 300px; left: 20px; width: 88%; }
+  .collection-recruitment-message h3 { font-size: 26px; }
+  .collection-recruitment-console { right: 20px; bottom: 82px; left: 20px; width: auto; }
+  .collection-recruitment-actions { gap: 3px; }
+  .collection-pull-face { min-height: 68px; padding: 8px; }
+  .collection-recruitment-utility { right: 20px; bottom: 20px; left: 20px; width: auto; }
+}
